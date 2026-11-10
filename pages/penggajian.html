@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penggajian - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Liberation+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/penggajian.css" />
+  </head>
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div style="padding: 24px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+          "
+        >
+          <div
+            style="
+              width: 32px;
+              height: 32px;
+              background: #4cd7f6;
+              border-radius: 8px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #000;
+              font-weight: bold;
+            "
+          >
+            H
+          </div>
+          <div>
+            <h2
+              style="
+                margin: 0;
+                font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                font-size: 18px;
+                color: #dae2fd;
+              "
+            >
+              HRMS
+            </h2>
+            <div
+              style="
+                background: rgba(87, 27, 193, 0.3);
+                border: 1px solid rgba(233, 221, 255, 0.3);
+                border-radius: 9999px;
+                padding: 2px 8px;
+                font-size: 10px;
+                color: #e9ddff;
+                display: inline-block;
+                margin-top: 4px;
+              "
+            >
+              Admin
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html" class="active"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Sidebar Bottom -->
+      <div style="padding: 20px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, 0.18);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 40px; height: 40px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                right: 0;
+                bottom: 0;
+                border: 2px solid #0b1326;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="font-size: 12px; font-weight: 600; color: #dae2fd">
+              Sarah Wijaya
+            </div>
+            <div style="font-size: 12px; color: #bcc9cd">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="position: absolute; left: 16px; color: #bcc9cd"
+            ></i>
+            <input
+              type="text"
+              placeholder="Cari data payroll, nama karyawan..."
+            />
+          </div>
+          <div class="header-actions">
+            <div class="badge-status">
+              <i class="fa-solid fa-bolt" style="color: #4cd7f6"></i> Terhubung
+              API Bank
+            </div>
+            <button
+              class="btn-icon"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                width: 36px;
+                height: 36px;
+                color: #bcc9cd;
+              "
+            >
+              <i class="fa-regular fa-envelope"></i>
+            </button>
+            <button
+              class="btn-icon"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                width: 36px;
+                height: 36px;
+                color: #bcc9cd;
+                position: relative;
+              "
+            >
+              <i class="fa-regular fa-bell"></i>
+              <span
+                style="
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  width: 6px;
+                  height: 6px;
+                  background: #ffb4ab;
+                  border-radius: 50%;
+                "
+              ></span>
+            </button>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 9999px;
+                padding: 4px 8px 4px 4px;
+                cursor: pointer;
+              "
+            >
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                style="width: 32px; height: 32px; border-radius: 50%"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="font-size: 10px; color: #bcc9cd"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Header Area -->
+        <div class="page-header">
+          <div>
+            <div class="breadcrumb">
+              HRMS
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              Penggajian
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              <span class="active">Manajemen Payroll</span>
+            </div>
+            <div class="page-title-area">
+              <h1 class="page-title">Manajemen Payroll</h1>
+              <div class="title-badge">
+                <div class="dot"></div>
+                Periode Aktif
+              </div>
+            </div>
+            <p class="page-subtitle">
+              Kelola dan proses gaji karyawan untuk periode aktif dengan
+              integrasi otomatis.
+            </p>
+          </div>
+
+          <div class="header-indicators">
+            <div class="indicator-item ind-green">
+              <div class="dot-glow"></div>
+              Transfer via Bank Terhubung
+            </div>
+            <div class="indicator-item">
+              <i class="fa-regular fa-calendar" style="color: #d0bcff"></i>
+              <div class="ind-purple">
+                Tenggat Waktu: <strong>28 Okt 2026</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Section -->
+        <div class="metrics-grid">
+          <!-- Card 1 -->
+          <div class="metric-card card-hero">
+            <div class="hero-glow"></div>
+            <div style="display: flex; justify-content: space-between">
+              <div>
+                <div class="card-title">TOTAL PENGELUARAN GAJI POKOK</div>
+                <div class="card-value-lg">Rp 1.180 M</div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    margin-bottom: 16px;
+                  "
+                >
+                  <span
+                    style="
+                      background: rgba(78, 222, 163, 0.15);
+                      border: 1px solid rgba(78, 222, 163, 0.3);
+                      border-radius: 9999px;
+                      padding: 2px 8px;
+                      color: #4edea3;
+                      font-size: 10px;
+                      font-weight: 600;
+                    "
+                    ><i class="fa-solid fa-arrow-trend-up"></i> +8.4%</span
+                  >
+                  <span class="card-sub" style="margin: 0"
+                    >Periode Oktober 2026 &bull; 142 Karyawan Terdaftar</span
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  background: rgba(255, 255, 255, 0.06);
+                  border: 1px solid rgba(255, 255, 255, 0.12);
+                  border-radius: 12px;
+                  width: 44px;
+                  height: 44px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+                "
+              >
+                <i
+                  class="fa-solid fa-wallet"
+                  style="color: #4cd7f6; font-size: 18px"
+                ></i>
+              </div>
+            </div>
+
+            <div class="trend-chart"></div>
+
+            <div class="breakdown-badges">
+              <div class="br-badge">
+                <div class="br-title" style="color: #bcc9cd">Gaji Pokok</div>
+                <div class="br-val">Rp 1.180 M</div>
+              </div>
+              <div class="br-badge">
+                <div class="br-title" style="color: #4edea3">
+                  Total Tunjangan
+                </div>
+                <div class="br-val">+Rp 362,4 Jt</div>
+              </div>
+              <div class="br-badge">
+                <div class="br-title" style="color: #ffb4ab">
+                  Potongan & PPh21
+                </div>
+                <div class="br-val">-Rp 56,8 Jt</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="metric-card">
+            <div>
+              <div class="card-title">STATUS PEMROSESAN PAYROLL</div>
+              <div class="progress-box">
+                <div class="progress-title">75%</div>
+                <div class="progress-sub">Progres Transfer</div>
+                <div class="progress-pct">106 / 142</div>
+                <div class="progress-track">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="warn-badge">
+              <i class="fa-solid fa-triangle-exclamation"></i> 12 Karyawan Butuh
+              Review Manual
+            </div>
+            <div class="warn-badge-bot">
+              <div style="display: flex; gap: 6px; align-items: center">
+                <div
+                  class="title-badge"
+                  style="padding: 2px 6px; border: none; box-shadow: none"
+                >
+                  <div class="dot" style="background: #4edea3"></div>
+                </div>
+                <span style="font-size: 10px; font-weight: 600; color: #bcc9cd"
+                  >Selesai</span
+                >
+                <span style="color: #4edea3; font-weight: 600; font-size: 10px"
+                  >106</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="metric-card">
+            <div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 16px;
+                "
+              >
+                <div class="card-title">PAJAK & BPJS TERKALKULASI</div>
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 8px;
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <i class="fa-solid fa-calculator" style="color: #e9ddff"></i>
+                </div>
+              </div>
+              <div class="card-value-md">Rp 124,8 Jt</div>
+              <div class="card-sub" style="font-size: 12px; margin-bottom: 0">
+                Otomasi Perhitungan PPh21, BPJS TK, & BPJS Kesehatan
+              </div>
+            </div>
+            <div class="warn-badge-bot" style="margin-top: auto">
+              <span
+                style="
+                  color: #d0bcff;
+                  font-size: 10px;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                "
+                ><i class="fa-solid fa-cloud-arrow-up"></i> Sync DJP
+                Online</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Toolbar -->
+        <div class="filter-toolbar">
+          <div class="left-filters">
+            <div class="status-toggle">
+              <button class="active">Semua</button>
+              <button>Draft</button>
+              <button>Pending</button>
+            </div>
+            <button class="filter-dropdown">
+              <i class="fa-regular fa-calendar" style="color: #4cd7f6"></i>
+              Oktober 2026
+              <i
+                class="fa-solid fa-chevron-down"
+                style="color: #bcc9cd; font-size: 10px"
+              ></i>
+            </button>
+            <button class="filter-dropdown">
+              <i class="fa-solid fa-building" style="color: #d0bcff"></i> Semua
+              Dept
+              <i
+                class="fa-solid fa-chevron-down"
+                style="color: #bcc9cd; font-size: 10px"
+              ></i>
+            </button>
+            <div class="search-box">
+              <i
+                class="fa-solid fa-search"
+                style="
+                  position: absolute;
+                  left: 14px;
+                  top: 12px;
+                  color: #bcc9cd;
+                "
+              ></i>
+              <input type="text" placeholder="Cari nama karyawan..." />
+            </div>
+          </div>
+          <div class="right-controls">
+            <button class="btn-outline">
+              <i class="fa-solid fa-file-export" style="color: #d0bcff"></i>
+              Export Laporan
+            </button>
+            <button class="btn-primary">
+              <i class="fa-solid fa-play" style="color: #003640"></i> Proses
+              Payroll
+            </button>
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="table-container">
+          <div class="table-tabs-bar">
+            <div class="table-tabs">
+              <button class="tab-btn active">
+                Semua Karyawan <span class="tab-count">142</span>
+              </button>
+              <button class="tab-btn">
+                Belum Diproses
+                <span
+                  class="tab-count"
+                  style="background: rgba(245, 158, 11, 0.2); color: #fcd34d"
+                  >36</span
+                >
+              </button>
+              <button class="tab-btn">
+                Sedang Transfer
+                <span
+                  class="tab-count"
+                  style="background: rgba(6, 182, 212, 0.2); color: #4cd7f6"
+                  >12</span
+                >
+              </button>
+              <button class="tab-btn">
+                Selesai
+                <span
+                  class="tab-count"
+                  style="background: rgba(27, 189, 133, 0.3); color: #4edea3"
+                  >94</span
+                >
+              </button>
+              <button class="tab-btn">
+                Bermasalah
+                <span
+                  class="tab-count"
+                  style="background: rgba(255, 255, 255, 0.1); color: #bcc9cd"
+                  >0</span
+                >
+              </button>
+            </div>
+            <div class="tab-actions">
+              <button class="btn-icon">
+                <i class="fa-solid fa-filter"></i>
+              </button>
+              <button class="btn-icon"><i class="fa-solid fa-gear"></i></button>
+            </div>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 50px; text-align: center">
+                    <input type="checkbox" />
+                  </th>
+                  <th>Karyawan & Posisi</th>
+                  <th>Gaji Pokok</th>
+                  <th class="text-right">Tunjangan</th>
+                  <th class="text-right">Potongan (Pajak+BPJS)</th>
+                  <th class="text-right">Total Take Home Pay</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row 1 -->
+                <tr>
+                  <td class="text-center"><input type="checkbox" /></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar-grad bg-cyan">BS</div>
+                      <div>
+                        <div class="user-name">
+                          Budi Santoso <span class="dept-badge">IT & Eng</span>
+                        </div>
+                        <div class="emp-role">Lead Software Engineer</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="currency-val">Rp 15.000.000</div></td>
+                  <td class="text-right">
+                    <div class="currency-green">+Rp 3.500.000</div>
+                    <span class="sub-val">Transport, Makan</span>
+                  </td>
+                  <td class="text-right">
+                    <div class="currency-red">-Rp 1.250.000</div>
+                    <span class="sub-val">PPh21, BPJS</span>
+                  </td>
+                  <td class="text-right">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 8px;
+                      "
+                    >
+                      <div
+                        class="title-badge"
+                        style="padding: 2px 6px; border: none; box-shadow: none"
+                      >
+                        <div class="dot" style="background: #4edea3"></div>
+                      </div>
+                      <div class="currency-bold">Rp 17.250.000</div>
+                    </div>
+                    <span class="sub-val">Bank Mandiri ••• 8912</span>
+                  </td>
+                  <td class="text-center">
+                    <span class="status-pill"
+                      ><i
+                        class="fa-regular fa-circle-check"
+                        style="color: #4edea3"
+                      ></i>
+                      Selesai</span
+                    >
+                  </td>
+                  <td class="text-center">
+                    <button class="btn-icon">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                  <td class="text-center"><input type="checkbox" /></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar-grad bg-purple">SN</div>
+                      <div>
+                        <div class="user-name">
+                          Siti Nurhaliza
+                          <span class="dept-badge">Marketing</span>
+                        </div>
+                        <div class="emp-role">Creative Lead Specialist</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="currency-val">Rp 12.500.000</div></td>
+                  <td class="text-right">
+                    <div class="currency-green">+Rp 2.800.000</div>
+                    <span class="sub-val">Transport, Komunikasi</span>
+                  </td>
+                  <td class="text-right">
+                    <div class="currency-red">-Rp 980.000</div>
+                    <span class="sub-val">PPh21, BPJS</span>
+                  </td>
+                  <td class="text-right">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 8px;
+                      "
+                    >
+                      <div
+                        class="title-badge"
+                        style="padding: 2px 6px; border: none; box-shadow: none"
+                      >
+                        <div class="dot" style="background: #4edea3"></div>
+                      </div>
+                      <div class="currency-bold">Rp 14.320.000</div>
+                    </div>
+                    <span class="sub-val">BCA ••• 0104</span>
+                  </td>
+                  <td class="text-center">
+                    <span class="status-pill"
+                      ><i
+                        class="fa-regular fa-circle-check"
+                        style="color: #4edea3"
+                      ></i>
+                      Selesai</span
+                    >
+                  </td>
+                  <td class="text-center">
+                    <button class="btn-icon">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                  <td class="text-center"><input type="checkbox" /></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar-grad bg-green">DP</div>
+                      <div>
+                        <div class="user-name">
+                          Dimas Pratama <span class="dept-badge">Finance</span>
+                        </div>
+                        <div class="emp-role">Senior Accountant</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="currency-val">Rp 11.000.000</div></td>
+                  <td class="text-right">
+                    <div class="currency-green">+Rp 2.100.000</div>
+                    <span class="sub-val">Transport, Makan</span>
+                  </td>
+                  <td class="text-right">
+                    <div class="currency-red">-Rp 850.000</div>
+                    <span class="sub-val">PPh21, BPJS</span>
+                  </td>
+                  <td class="text-right">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 8px;
+                      "
+                    >
+                      <div
+                        class="title-badge"
+                        style="padding: 2px 6px; border: none; box-shadow: none"
+                      >
+                        <div class="dot" style="background: #4edea3"></div>
+                      </div>
+                      <div class="currency-bold pending">Rp 12.250.000</div>
+                    </div>
+                    <span class="sub-val">BNI ••• 9042</span>
+                  </td>
+                  <td class="text-center">
+                    <span class="status-pill"
+                      ><i
+                        class="fa-solid fa-circle-notch fa-spin"
+                        style="color: #4cd7f6"
+                      ></i>
+                      Proses</span
+                    >
+                  </td>
+                  <td class="text-center">
+                    <button class="btn-icon">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                  <td class="text-center"><input type="checkbox" /></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar-grad bg-pink">AP</div>
+                      <div>
+                        <div class="user-name">
+                          Amanda Putri <span class="dept-badge">HR</span>
+                        </div>
+                        <div class="emp-role">HR Specialist</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="currency-val">Rp 9.500.000</div></td>
+                  <td class="text-right">
+                    <div class="currency-green">+Rp 1.500.000</div>
+                    <span class="sub-val">Transport, Makan</span>
+                  </td>
+                  <td class="text-right">
+                    <div class="currency-red">-Rp 650.000</div>
+                    <span class="sub-val">PPh21, BPJS</span>
+                  </td>
+                  <td class="text-right">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 8px;
+                      "
+                    >
+                      <div
+                        class="title-badge"
+                        style="padding: 2px 6px; border: none; box-shadow: none"
+                      >
+                        <div class="dot" style="background: #4edea3"></div>
+                      </div>
+                      <div class="currency-bold pending">Rp 10.350.000</div>
+                    </div>
+                    <span class="sub-val">Bank Mandiri ••• 8121</span>
+                  </td>
+                  <td class="text-center">
+                    <span class="status-pill"
+                      ><i
+                        class="fa-regular fa-clock"
+                        style="color: #fcd34d"
+                      ></i>
+                      Pending</span
+                    >
+                  </td>
+                  <td class="text-center">
+                    <button class="btn-icon">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                  <td class="text-center"><input type="checkbox" /></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar-grad bg-blue">RR</div>
+                      <div>
+                        <div class="user-name">
+                          Rizky Ramadhan
+                          <span class="dept-badge">IT & Eng</span>
+                        </div>
+                        <div class="emp-role">Cloud DevOps Engineer</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="currency-val">Rp 14.000.000</div></td>
+                  <td class="text-right">
+                    <div class="currency-green">+Rp 3.000.000</div>
+                    <span class="sub-val">Transport, Komunikasi</span>
+                  </td>
+                  <td class="text-right">
+                    <div class="currency-red">-Rp 1.150.000</div>
+                    <span class="sub-val">PPh21, BPJS</span>
+                  </td>
+                  <td class="text-right">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 8px;
+                      "
+                    >
+                      <div
+                        class="title-badge"
+                        style="padding: 2px 6px; border: none; box-shadow: none"
+                      >
+                        <div class="dot" style="background: #4edea3"></div>
+                      </div>
+                      <div class="currency-bold pending">Rp 15.850.000</div>
+                    </div>
+                    <span class="sub-val">BCA ••• 0077</span>
+                  </td>
+                  <td class="text-center">
+                    <span class="status-pill"
+                      ><i
+                        class="fa-regular fa-clock"
+                        style="color: #fcd34d"
+                      ></i>
+                      Pending</span
+                    >
+                  </td>
+                  <td class="text-center">
+                    <button class="btn-icon">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr>
+                  <td class="text-center"><input type="checkbox" /></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar-grad bg-orange">HG</div>
+                      <div>
+                        <div class="user-name">
+                          Hendra Gunawan <span class="dept-badge">Sales</span>
+                        </div>
+                        <div class="emp-role">Regional Sales Manager</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="currency-val">Rp 16.500.000</div></td>
+                  <td class="text-right">
+                    <div class="currency-green">+Rp 4.200.000</div>
+                    <span class="sub-val">Bonus, Transport</span>
+                  </td>
+                  <td class="text-right">
+                    <div class="currency-red">-Rp 1.450.000</div>
+                    <span class="sub-val">PPh21, BPJS</span>
+                  </td>
+                  <td class="text-right">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 8px;
+                      "
+                    >
+                      <div
+                        class="title-badge"
+                        style="padding: 2px 6px; border: none; box-shadow: none"
+                      >
+                        <div class="dot" style="background: #4edea3"></div>
+                      </div>
+                      <div class="currency-bold">Rp 19.250.000</div>
+                    </div>
+                    <span class="sub-val">Bank Mandiri ••• 5532</span>
+                  </td>
+                  <td class="text-center">
+                    <span class="status-pill"
+                      ><i
+                        class="fa-regular fa-circle-check"
+                        style="color: #4edea3"
+                      ></i>
+                      Selesai</span
+                    >
+                  </td>
+                  <td class="text-center">
+                    <button class="btn-icon">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <div class="pagination-info">
+              Menampilkan <strong>1-6</strong> dari
+              <strong>142</strong> karyawan
+            </div>
+            <div class="pagination-controls">
+              <button class="page-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <button class="page-btn">...</button>
+              <button class="page-btn">10</button>
+              <button class="page-btn">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Karyawan Baru - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Liberation+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/form.css" />
+  </head>
+
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+    <div class="blob-center"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <h2
+              style="
+                color: #dae2fd;
+                font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                font-size: 18px;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <i class="fa-solid fa-layer-group" style="color: #4cd7f6"></i>
+              HRMS
+            </h2>
+            <span
+              style="
+                color: #dae2fd;
+                font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                margin-left: -4px;
+              "
+              >Admin</span
+            >
+          </div>
+          <span class="enterprise-badge">Enterprise</span>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Sidebar Bottom -->
+      <div
+        style="padding: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1)"
+      >
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, 0.18);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 40px; height: 40px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                border: 2px solid #0b1326;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="color: #dae2fd; font-weight: 600; font-size: 12px">
+              Sarah Wijaya
+            </div>
+            <div style="color: #bcc9cd; font-size: 11px">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <!-- KONTEN UTAMA -->
+      <main class="main-content">
+        <!-- Top Header Navbar -->
+        <header class="top-header">
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="color: #bcc9cd; font-size: 14px"
+            ></i>
+            <input
+              type="text"
+              placeholder="Cari karyawan, pengajuan, atau dokumen..."
+            />
+          </div>
+          <div class="header-actions">
+            <div class="date-badge">
+              <i class="fa-regular fa-calendar"></i> Selasa, 6 Oktober 2026
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-bell"></i>
+              <span class="notif-dot">3</span>
+            </div>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div class="header-profile">
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                alt="User"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="color: #bcc9cd; font-size: 10px; padding-right: 4px"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Breadcrumbs -->
+        <div class="breadcrumb">
+          Portal Administrasi SDM
+          <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i> Data
+          Karyawan
+          <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+          <span>Tambah Karyawan Baru</span>
+        </div>
+
+        <!-- Page Title & Badges -->
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Tambah Karyawan Baru</h1>
+            <p>
+              Lengkapi formulir di bawah ini untuk mendaftarkan staf baru ke
+              dalam sistem kepegawaian perusahaan secara terpusat dan
+              terverifikasi.
+            </p>
+          </div>
+          <div class="status-badges-group">
+            <div class="status-badge new">
+              <span class="dot"></span> Status: Formulir Baru
+            </div>
+            <div class="status-badge draft">
+              <i class="fa-solid fa-hashtag" style="color: #d0bcff"></i> Draft
+              NIP: EMP-0143
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+          <!-- Left Column: Form -->
+          <div class="form-column">
+            <!-- SECTION 1 -->
+            <div class="form-section">
+              <div class="section-header">
+                <div class="section-title">
+                  <div class="icon-box"><i class="fa-regular fa-user"></i></div>
+                  <h2>Informasi Pribadi & Kontak</h2>
+                </div>
+                <div class="section-step">BAGIAN 01/02</div>
+              </div>
+
+              <div class="upload-block">
+                <div class="avatar-placeholder">
+                  <i class="fa-regular fa-user"></i>
+                  <div class="avatar-add-btn">
+                    <i class="fa-solid fa-camera"></i>
+                  </div>
+                </div>
+                <div class="upload-info">
+                  <div class="upload-actions">
+                    <button class="btn-upload">
+                      <i
+                        class="fa-solid fa-arrow-up-from-bracket"
+                        style="color: #4cd7f6"
+                      ></i>
+                      Unggah Foto Profil
+                    </button>
+                    <button class="btn-delete">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                  </div>
+                  <div class="upload-desc">
+                    Format yang didukung: JPG, PNG berdimensi proporsional
+                    (maksimal 2MB).
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid full-width">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Nama Lengkap Staf <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper">
+                    <i class="fa-regular fa-id-badge icon-left"></i>
+                    <input
+                      type="text"
+                      class="with-icon"
+                      placeholder="cth. Pratama Wijaya, S.Kom"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">
+                    <span
+                      >Nomor Induk Pegawai (NIP)
+                      <span class="required">*</span></span
+                    >
+                    <button class="btn-link">
+                      <i class="fa-solid fa-arrows-rotate"></i> Acak Baru
+                    </button>
+                  </label>
+                  <div class="input-wrapper readonly">
+                    <i class="fa-solid fa-lock icon-left"></i>
+                    <input
+                      type="text"
+                      class="with-icon"
+                      value="EMP-0143"
+                      readonly
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Email Perusahaan <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-at icon-left"></i>
+                    <input
+                      type="email"
+                      class="with-icon"
+                      placeholder="pratama@company.co.id"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Jenis Kelamin <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper">
+                    <select>
+                      <option value="" disabled selected>
+                        Pilih Jenis Kelamin
+                      </option>
+                      <option value="L">Laki-laki</option>
+                      <option value="P">Perempuan</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Nomor Telepon / WhatsApp</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-phone icon-left"></i>
+                    <input
+                      type="text"
+                      class="with-icon"
+                      placeholder="+62 812-3456-7890"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2 -->
+            <div class="form-section">
+              <div class="section-header">
+                <div class="section-title">
+                  <div class="icon-box purple">
+                    <i class="fa-solid fa-briefcase"></i>
+                  </div>
+                  <h2>Data Pekerjaan & Kepegawaian</h2>
+                </div>
+                <div class="section-step">BAGIAN 02/02</div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Departemen <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper">
+                    <select>
+                      <option value="dept-it" selected>
+                        IT & Engineering
+                      </option>
+                      <option value="dept-mkt">Marketing & Creative</option>
+                      <option value="dept-fin">Finance & Operations</option>
+                      <option value="dept-hr">Human Resources</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Jabatan / Posisi <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper">
+                    <select>
+                      <option value="Senior Software Engineer" selected>
+                        Senior Software Engineer
+                      </option>
+                      <option value="Junior Software Engineer">Junior Software Engineer</option>
+                      <option value="Product Manager">Product Manager</option>
+                      <option value="UI/UX Designer">UI/UX Designer</option>
+                      <option value="Marketing Specialist">Marketing Specialist</option>
+                      <option value="Financial Analyst">Financial Analyst</option>
+                      <option value="HR Specialist">HR Specialist</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Tanggal Mulai Bergabung
+                    <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper" style="padding: 0 12px; gap: 8px">
+                    <i
+                      class="fa-regular fa-calendar-days"
+                      style="color: #bcc9cd"
+                    ></i>
+                    <div
+                      style="
+                        display: flex;
+                        gap: 4px;
+                        color: #dae2fd;
+                        font-size: 14px;
+                      "
+                    >
+                      <input
+                        type="text"
+                        value="07"
+                        style="width: 20px; padding: 0; text-align: center"
+                      />/
+                      <input
+                        type="text"
+                        value="01"
+                        style="width: 20px; padding: 0; text-align: center"
+                      />/
+                      <input
+                        type="text"
+                        value="2026"
+                        style="width: 40px; padding: 0; text-align: center"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Status Ikatan Kerja <span class="required">*</span></label
+                  >
+                  <div class="input-wrapper">
+                    <select>
+                      <option value="PKWTT" selected>Tetap (PKWTT)</option>
+                      <option value="PKWT">Kontrak (PKWT)</option>
+                      <option value="Probation">
+                        Masa Percobaan (Probation)
+                      </option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 8px">
+                <label class="form-label">Model Penempatan Kerja</label>
+                <div class="radio-cards-container">
+                  <div class="radio-card active">
+                    <i class="fa-solid fa-building radio-icon"></i>
+                    <div class="radio-info">
+                      <span class="radio-title">WFO Jakarta</span>
+                      <span class="radio-desc">Kantor Pusat Sudirman</span>
+                    </div>
+                  </div>
+                  <div class="radio-card">
+                    <i
+                      class="fa-solid fa-arrow-right-arrow-left radio-icon"
+                    ></i>
+                    <div class="radio-info">
+                      <span class="radio-title">Hybrid Flex</span>
+                      <span class="radio-desc">3 Hari Kantor / 2 Remote</span>
+                    </div>
+                  </div>
+                  <div class="radio-card">
+                    <i class="fa-solid fa-house-laptop radio-icon"></i>
+                    <div class="radio-info">
+                      <span class="radio-title">Full Remote</span>
+                      <span class="radio-desc">Domisili Bebas Indonesia</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Helpers -->
+          <div class="right-column">
+            <!-- Guidelines Card -->
+            <div class="guideline-card">
+              <div class="guideline-header">
+                <i class="fa-regular fa-square-check"></i>
+                <h3>Panduan Registrasi</h3>
+              </div>
+              <div class="guideline-intro">
+                Patuhi standar integrasi data kepegawaian perusahaan untuk
+                mencegah kegagalan sinkronisasi modul payroll dan asuransi.
+              </div>
+
+              <div class="checklist">
+                <div class="check-item">
+                  <div class="check-icon">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="check-content">
+                    <h4>Validasi Domain Email</h4>
+                    <p>
+                      Wajib menggunakan domain resmi
+                      <span>@company.co.id</span> untuk single-sign-on (SSO).
+                    </p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <div class="check-icon">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="check-content">
+                    <h4>Sinkronisasi Otomatis Payroll</h4>
+                    <p>
+                      Nomor Rekening Bank & data BPJS Ketenagakerjaan akan
+                      disinkronkan secara otomatis setelah staf diverifikasi HR.
+                    </p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <div class="check-icon">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="check-content">
+                    <h4>Kredensial Akses Mandiri</h4>
+                    <p>
+                      Surat undangan digital beserta tautan pembuatan sandi
+                      portal Employee Self-Service (ESS) terkirim otomatis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="capacity-bar">
+                <div class="capacity-info">
+                  <i class="fa-solid fa-users"></i> Kapasitas Departemen IT
+                </div>
+                <div class="capacity-badge">42 / 50 Staf</div>
+              </div>
+            </div>
+
+            <!-- Live ID Card Preview -->
+            <div class="id-card">
+              <div class="id-header">
+                <span>KARTU PENGENAL INSTAN</span>
+                <div class="pratinjau-badge">PRATINJAU ID</div>
+              </div>
+
+              <div class="id-profile">
+                <div class="id-avatar">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="id-details">
+                  <h4>Pratama Wijaya</h4>
+                  <div class="job">Senior Software Engineer</div>
+                  <div class="dept">IT & Rekayasa Perangkat Lunak</div>
+                </div>
+              </div>
+
+              <div class="id-footer">
+                <div class="location">Kantor: Sudirman Center</div>
+                <div class="status">Siap Diterbitkan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Sticky Bottom Bar -->
+    <div class="bottom-bar">
+      <a href="data-master.html" class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Data Karyawan
+      </a>
+      <div class="action-buttons">
+        <button class="btn-clear">Bersihkan Form</button>
+        <button class="btn-save">
+          <i class="fa-solid fa-user-check"></i> Simpan & Terbitkan Karyawan
+        </button>
+      </div>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

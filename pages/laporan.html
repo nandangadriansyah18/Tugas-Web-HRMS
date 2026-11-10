@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Kehadiran - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Liberation+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/laporan.css" />
+  </head>
+
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+    <div class="blob-center"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <img
+              src="https://via.placeholder.com/32/4CD7F6/000?text=H"
+              style="width: 32px; height: 32px; border-radius: 8px"
+              alt="Logo"
+            />
+            <div style="display: flex; flex-direction: column">
+              <h2
+                style="
+                  color: #dae2fd;
+                  font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                  font-size: 18px;
+                  margin: 0;
+                  line-height: 1;
+                "
+              >
+                HRMS
+              </h2>
+              <span style="color: #dae2fd; font-size: 14px">Admin</span>
+            </div>
+          </div>
+          <span class="enterprise-badge">Enterprise</span>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html" class="active"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Sidebar Bottom -->
+      <div style="padding: 20px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, 0.18);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 40px; height: 40px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                border: 2px solid #0b1326;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="color: #dae2fd; font-weight: 600; font-size: 12px">
+              Sarah Wijaya
+            </div>
+            <div style="color: #bcc9cd; font-size: 12px">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-search">
+            <i class="fa-solid fa-search"></i>
+            <input
+              type="text"
+              placeholder="Cari karyawan, pengajuan, atau dokumen..."
+            />
+          </div>
+          <div class="header-actions">
+            <div class="date-badge">
+              <i class="fa-regular fa-calendar"></i> Selasa, 6 Oktober 2026
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-bell"></i>
+              <span class="notif-dot">3</span>
+            </div>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div class="header-profile">
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                alt="User"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="color: #bcc9cd; font-size: 10px"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Title Area -->
+        <div class="page-header-area">
+          <div class="page-info">
+            <div class="breadcrumb">
+              Portal Administrasi SDM
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              Laporan
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              <span>Kehadiran Bulanan</span>
+            </div>
+            <div class="page-title-row">
+              <h1>Laporan Kehadiran Bulanan</h1>
+              <div class="badge-periode">Periode Final</div>
+            </div>
+            <p class="page-subtitle">
+              Rekapitulasi komprehensif kehadiran, absensi, dan keterlambatan
+              staf untuk evaluasi performa dan integrasi penggajian.
+            </p>
+          </div>
+
+          <div class="action-controls">
+            <div class="row-controls">
+              <button class="btn-dropdown">
+                <i class="fa-regular fa-calendar" style="color: #4cd7f6"></i>
+                Oktober 2026 <i class="fa-solid fa-chevron-down caret"></i>
+              </button>
+              <button class="btn-dropdown">
+                <i class="fa-solid fa-building" style="color: #d0bcff"></i>
+                Semua Departemen <i class="fa-solid fa-chevron-down caret"></i>
+              </button>
+            </div>
+            <div class="row-controls">
+              <button class="btn-secondary">
+                <i class="fa-solid fa-file-excel"></i> Ekspor Excel / CSV
+              </button>
+              <button class="btn-primary">
+                <i class="fa-solid fa-file-pdf"></i> Cetak / Ekspor PDF
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <!-- Card 1 -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Hari Kerja</span>
+              <div class="kpi-icon-box">
+                <i class="fa-regular fa-calendar-check"></i>
+              </div>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value-row">
+                <span class="kpi-value">22</span>
+              </div>
+              <div class="kpi-subtitle">
+                <i class="fa-regular fa-clock" style="color: #4cd7f6"></i> Bulan
+                Oktober 2026 (Senin - Jumat)
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Rata-rata Kehadiran</span>
+              <div class="kpi-icon-box">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value-row">
+                <span class="kpi-value"
+                  >94.8<span style="font-size: 24px">%</span></span
+                >
+                <span class="badge-sangat-baik">Sangat Baik</span>
+              </div>
+              <div class="progress-bar-container">
+                <div class="progress-track">
+                  <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">+1.2% MoM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Total Jam Lembur</span>
+              <div class="kpi-icon-box"><i class="fa-solid fa-bolt"></i></div>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value-row">
+                <span class="kpi-value">348</span>
+                <span class="kpi-unit">Jam</span>
+              </div>
+              <div class="kpi-subtitle" style="margin-top: 4px">
+                <span class="badge-karyawan">42 Karyawan</span> tercatat lembur
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Tingkat Ketidakhadiran</span>
+              <div class="kpi-icon-box">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value-row">
+                <span class="kpi-value"
+                  >5.2<span style="font-size: 24px">%</span></span
+                >
+              </div>
+              <div class="breakdown-row" style="margin-top: 8px">
+                <span class="c-yellow">S:</span> 3.0%
+                <span class="c-dim">|</span>
+                <span class="c-purple">I:</span> 1.5%
+                <span class="c-dim">|</span> <span class="c-red">A:</span> 0.7%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-bar">
+          <div class="tabs-list">
+            <button class="tab-btn active">Semua (142)</button>
+            <button class="tab-btn">Kehadiran Sempurna 100% (88)</button>
+            <button class="tab-btn">Perlu Perhatian / Alpha (5)</button>
+            <button class="tab-btn">Cuti/Sakit (>3 Hari) (12)</button>
+          </div>
+          <div class="filter-search">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Cari nama karyawan atau NIP..." />
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>NIP & NAMA KARYAWAN</th>
+                  <th>DEPARTEMEN</th>
+                  <th>HARI KERJA</th>
+                  <th class="th-hadir">HADIR</th>
+                  <th class="th-sakit">SAKIT</th>
+                  <th class="th-izin">IZIN</th>
+                  <th class="th-alpha">ALPHA</th>
+                  <th>PERSENTASE KEHADIRAN</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row 1 -->
+                <tr>
+                  <td>
+                    <div class="employee-info">
+                      <div class="avatar-initial av-1">BS</div>
+                      <div class="emp-details">
+                        <h4>Budi Santoso</h4>
+                        <div class="emp-role">
+                          <span class="nip">EMP-0089</span>
+                          <span class="dot-sep">•</span> Lead Software Engineer
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dept-badge dept-it">IT & Engineering</div>
+                  </td>
+                  <td><span class="count-text">22</span></td>
+                  <td><div class="box-count box-hadir">22</div></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td>
+                    <div class="percent-cell">
+                      <div class="pct-info">
+                        <span class="pct-val" style="color: #4edea3">100%</span>
+                        <span class="pct-label">22/22 Hari</span>
+                      </div>
+                      <div class="pct-track">
+                        <div class="pct-fill fill-100"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                  <td>
+                    <div class="employee-info">
+                      <div class="avatar-initial av-2">SN</div>
+                      <div class="emp-details">
+                        <h4>Siti Nurhaliza</h4>
+                        <div class="emp-role">
+                          <span class="nip">EMP-0104</span>
+                          <span class="dot-sep">•</span> Creative Lead
+                          Specialist
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dept-badge dept-marketing">
+                      Marketing & Creative
+                    </div>
+                  </td>
+                  <td><span class="count-text">22</span></td>
+                  <td><div class="box-count box-hadir">20</div></td>
+                  <td><div class="box-count box-sakit">2</div></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td>
+                    <div class="percent-cell">
+                      <div class="pct-info">
+                        <span class="pct-val" style="color: #4cd7f6"
+                          >90.9%</span
+                        >
+                        <span class="pct-label">20/22 Hari</span>
+                      </div>
+                      <div class="pct-track">
+                        <div class="pct-fill fill-90"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                  <td>
+                    <div class="employee-info">
+                      <div class="avatar-initial av-3">DP</div>
+                      <div class="emp-details">
+                        <h4>Dimas Pratama</h4>
+                        <div class="emp-role">
+                          <span class="nip">EMP-0042</span>
+                          <span class="dot-sep">•</span> Financial Analyst
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dept-badge dept-finance">
+                      Finance & Operations
+                    </div>
+                  </td>
+                  <td><span class="count-text">22</span></td>
+                  <td><div class="box-count box-hadir">21</div></td>
+                  <td><div class="box-count box-sakit">1</div></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td>
+                    <div class="percent-cell">
+                      <div class="pct-info">
+                        <span class="pct-val" style="color: #4edea3"
+                          >95.5%</span
+                        >
+                        <span class="pct-label">21/22 Hari</span>
+                      </div>
+                      <div class="pct-track">
+                        <div class="pct-fill fill-95"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                  <td>
+                    <div class="employee-info">
+                      <div class="avatar-initial av-4">AP</div>
+                      <div class="emp-details">
+                        <h4>Amanda Putri</h4>
+                        <div class="emp-role">
+                          <span class="nip">EMP-0121</span>
+                          <span class="dot-sep">•</span> People Operations Exec
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-badge dept-hr">Human Resources</div></td>
+                  <td><span class="count-text">22</span></td>
+                  <td><div class="box-count box-hadir">22</div></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td>
+                    <div class="percent-cell">
+                      <div class="pct-info">
+                        <span class="pct-val" style="color: #4edea3">100%</span>
+                        <span class="pct-label">22/22 Hari</span>
+                      </div>
+                      <div class="pct-track">
+                        <div class="pct-fill fill-100"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                  <td>
+                    <div class="employee-info">
+                      <div class="avatar-initial av-5">RR</div>
+                      <div class="emp-details">
+                        <h4>Rizky Ramadhan</h4>
+                        <div class="emp-role">
+                          <span class="nip">EMP-0077</span>
+                          <span class="dot-sep">•</span> Cloud DevOps Engineer
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dept-badge dept-it">IT & Engineering</div>
+                  </td>
+                  <td><span class="count-text">22</span></td>
+                  <td><div class="box-count box-hadir">21</div></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td><div class="box-count box-izin">1</div></td>
+                  <td><span class="count-mono">0</span></td>
+                  <td>
+                    <div class="percent-cell">
+                      <div class="pct-info">
+                        <span class="pct-val" style="color: #4edea3"
+                          >95.5%</span
+                        >
+                        <span class="pct-label">21/22 Hari</span>
+                      </div>
+                      <div class="pct-track">
+                        <div class="pct-fill fill-95"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                  <td>
+                    <div class="employee-info">
+                      <div class="avatar-initial av-6">HG</div>
+                      <div class="emp-details">
+                        <h4>Hendra Gunawan</h4>
+                        <div class="emp-role">
+                          <span class="nip">EMP-0056</span>
+                          <span class="dot-sep">•</span> Supply Chain
+                          Coordinator
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dept-badge dept-ops">
+                      Operations & Logistics
+                    </div>
+                  </td>
+                  <td><span class="count-text">22</span></td>
+                  <td><div class="box-count box-hadir">19</div></td>
+                  <td><div class="box-count box-sakit">1</div></td>
+                  <td><div class="box-count box-izin">1</div></td>
+                  <td><div class="box-count box-alpha">1</div></td>
+                  <td>
+                    <div class="percent-cell">
+                      <div class="pct-info">
+                        <span class="pct-val" style="color: #fbbf24"
+                          >86.4%</span
+                        >
+                        <span class="pct-label">19/22 Hari</span>
+                      </div>
+                      <div class="pct-track">
+                        <div class="pct-fill fill-86"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Footer -->
+          <div class="table-footer">
+            <div class="footer-info">
+              <span class="footer-text"
+                >Menampilkan 1 - 6 dari 142 Karyawan Terdaftar</span
+              >
+              <div class="verified-badge">
+                <i class="fa-solid fa-check-circle"></i> Terverifikasi oleh SDM
+                & Payroll (6 Okt 2026)
+              </div>
+            </div>
+            <div class="pagination">
+              <button class="page-btn disabled">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <span class="page-dots">...</span>
+              <button class="page-btn">24</button>
+              <button class="page-btn">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

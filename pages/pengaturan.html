@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/pengaturan.css" />
+  </head>
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div style="padding: 24px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+          "
+        >
+          <div
+            style="
+              width: 32px;
+              height: 32px;
+              background: #4cd7f6;
+              border-radius: 8px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #000;
+              font-weight: bold;
+            "
+          >
+            H
+          </div>
+          <div>
+            <h2
+              style="
+                margin: 0;
+                font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                font-size: 18px;
+                color: #dae2fd;
+              "
+            >
+              HRMS
+            </h2>
+            <div
+              style="
+                background: rgba(87, 27, 193, 0.3);
+                border: 1px solid rgba(233, 221, 255, 0.3);
+                border-radius: 9999px;
+                padding: 2px 8px;
+                font-size: 10px;
+                color: #e9ddff;
+                display: inline-block;
+                margin-top: 4px;
+              "
+            >
+              Admin
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html" class="active"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div style="padding: 20px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, 0.18);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 40px; height: 40px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                right: 0;
+                bottom: 0;
+                border: 2px solid #0b1326;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="font-size: 12px; font-weight: 600; color: #dae2fd">
+              Sarah Wijaya
+            </div>
+            <div style="font-size: 12px; color: #bcc9cd">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="position: absolute; left: 16px; color: #bcc9cd"
+            ></i>
+            <input type="text" placeholder="Cari menu pengaturan..." />
+          </div>
+          <div class="header-actions">
+            <button class="btn-icon-sq" style="width: 36px; height: 36px">
+              <i class="fa-regular fa-envelope"></i>
+            </button>
+            <button
+              class="btn-icon-sq"
+              style="position: relative; width: 36px; height: 36px"
+            >
+              <i class="fa-regular fa-bell"></i>
+              <span
+                style="
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  width: 6px;
+                  height: 6px;
+                  background: #ffb4ab;
+                  border-radius: 50%;
+                "
+              ></span>
+            </button>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 9999px;
+                padding: 4px 8px 4px 4px;
+                cursor: pointer;
+              "
+            >
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                style="width: 32px; height: 32px; border-radius: 50%"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="font-size: 10px; color: #bcc9cd"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Header Area -->
+        <div class="page-header">
+          <div>
+            <div class="breadcrumb">
+              HRMS
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              Pengaturan
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              <span class="active">Profil Perusahaan</span>
+            </div>
+            <h1 class="page-title">Pengaturan</h1>
+            <p class="page-subtitle">
+              Kelola profil perusahaan, hak akses, integrasi, dan kebijakan
+              global HRMS.
+            </p>
+          </div>
+
+          <div class="header-indicators">
+            <div class="indicator-pill ind-sync">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: #4edea3;
+                  border-radius: 50%;
+                  box-shadow: 0 0 8px #4edea3;
+                "
+              ></div>
+              Sinkronisasi Aktif
+            </div>
+            <div class="indicator-pill ind-env">
+              <i class="fa-solid fa-code-branch"></i> Cloud v2.4.1 (Production)
+            </div>
+          </div>
+        </div>
+
+        <!-- Two Columns Settings Layout -->
+        <div class="settings-layout">
+          <!-- Column 1: Left Menu -->
+          <div class="settings-menu">
+            <a href="#" class="s-menu-item">
+              <div class="s-icon-box">
+                <i class="fa-solid fa-user-shield"></i>
+              </div>
+              <div>
+                <div class="s-title">Profil Admin</div>
+                <div class="s-desc">Akun & Keamanan Sarah Wijaya</div>
+              </div>
+            </a>
+            <a href="#" class="s-menu-item active">
+              <div
+                class="s-icon-box"
+                style="background: rgba(76, 215, 246, 0.2)"
+              >
+                <i class="fa-solid fa-building"></i>
+              </div>
+              <div>
+                <div class="s-title">
+                  Perusahaan
+                  <div
+                    style="
+                      width: 6px;
+                      height: 6px;
+                      background: #4cd7f6;
+                      border-radius: 50%;
+                      box-shadow: 0 0 8px #06b6d4;
+                      margin-left: auto;
+                    "
+                  ></div>
+                </div>
+                <div class="s-desc">Profil PT & Preferensi Kerja</div>
+              </div>
+            </a>
+            <a href="#" class="s-menu-item">
+              <div class="s-icon-box"><i class="fa-solid fa-key"></i></div>
+              <div>
+                <div class="s-title">
+                  Hak Akses <span class="s-badge-sm">Level 4</span>
+                </div>
+                <div class="s-desc">Peran Admin & Izin Staf</div>
+              </div>
+            </a>
+            <a href="#" class="s-menu-item">
+              <div class="s-icon-box"><i class="fa-solid fa-bell"></i></div>
+              <div>
+                <div class="s-title">Notifikasi</div>
+                <div class="s-desc">Email, Webhook, & Alert</div>
+              </div>
+            </a>
+            <a href="#" class="s-menu-item">
+              <div class="s-icon-box"><i class="fa-solid fa-plug"></i></div>
+              <div>
+                <div class="s-title">
+                  Integrasi & API
+                  <span
+                    class="s-badge-sm"
+                    style="
+                      background: rgba(78, 222, 163, 0.15);
+                      border: 1px solid rgba(78, 222, 163, 0.3);
+                      color: #4edea3;
+                    "
+                    >Aktif</span
+                  >
+                </div>
+                <div class="s-desc">Mandiri, PPh21 & BPJS</div>
+              </div>
+            </a>
+
+            <!-- Storage Info Card -->
+            <div class="storage-card">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 8px;
+                "
+              >
+                <div style="font-size: 10px; font-weight: 600; color: #dae2fd">
+                  <i
+                    class="fa-solid fa-cloud"
+                    style="color: #4cd7f6; margin-right: 4px"
+                  ></i>
+                  Cloud Storage
+                </div>
+                <div style="font-size: 10px; font-weight: 700; color: #4cd7f6">
+                  65%
+                </div>
+              </div>
+              <div
+                style="
+                  height: 6px;
+                  background: rgba(255, 255, 255, 0.08);
+                  border-radius: 9999px;
+                  overflow: hidden;
+                  margin-bottom: 8px;
+                "
+              >
+                <div
+                  style="
+                    width: 65%;
+                    height: 100%;
+                    background: linear-gradient(
+                      90deg,
+                      #06b6d4 0%,
+                      #4cd7f6 100%
+                    );
+                    box-shadow: 0 0 12px #06b6d4;
+                  "
+                ></div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <div style="font-size: 10px; color: #bcc9cd">
+                  32.5 GB / 50 GB
+                </div>
+                <a
+                  href="#"
+                  style="
+                    font-size: 10px;
+                    font-weight: 600;
+                    color: #d0bcff;
+                    text-decoration: none;
+                  "
+                  >Upgrade <i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Right Content Panel -->
+          <div class="settings-content">
+            <!-- Form Header -->
+            <div class="section-header">
+              <div>
+                <h2 class="sec-title">Profil Perusahaan</h2>
+                <p class="sec-desc">
+                  Informasi legal, identitas brand, dan alamat korespondensi
+                  perusahaan.
+                </p>
+              </div>
+              <button class="btn-outline">
+                <i class="fa-solid fa-eye" style="color: #4cd7f6"></i> Preview
+              </button>
+            </div>
+
+            <!-- Logo Upload -->
+            <div class="logo-upload-box">
+              <div style="display: flex; align-items: center; gap: 16px">
+                <div class="logo-preview">
+                  <img
+                    src="https://ui-avatars.com/api/?name=NS&background=random&color=fff"
+                    alt="Logo"
+                  />
+                  <div class="logo-status">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="font-size: 14px; font-weight: 600; color: #dae2fd"
+                  >
+                    Logo & Brand Banner
+                  </div>
+                  <div style="font-size: 12px; color: #bcc9cd; margin-top: 2px">
+                    Format JPG/PNG maksimal 2MB.
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 12px">
+                <button
+                  style="
+                    background: rgba(76, 215, 246, 0.15);
+                    border: 1px solid rgba(76, 215, 246, 0.4);
+                    border-radius: 12px;
+                    padding: 8px 16px;
+                    color: #4cd7f6;
+                    font-size: 12px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                  "
+                >
+                  <i class="fa-solid fa-upload"></i> Ganti Logo
+                </button>
+                <button
+                  style="
+                    background: rgba(255, 255, 255, 0.04);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 12px;
+                    width: 36px;
+                    height: 36px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #bcc9cd;
+                    cursor: pointer;
+                  "
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Form Grid -->
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <div class="form-label">
+                  <span>Nama Perusahaan (Entitas Legal)</span>
+                  <span class="req">Wajib</span>
+                </div>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-building"></i>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="PT Nebula Solusi Digital Indonesia Tbk"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Nomor Induk Berusaha (NIB) / NPWP</span>
+                </div>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-id-card"></i>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="81203912039123"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Email HRD (Official)</span>
+                  <span class="badge-success"
+                    ><i class="fa-solid fa-check"></i> Terverifikasi</span
+                  >
+                </div>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-envelope"></i>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="hrd@company.co.id"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Nomor Telepon & Call Center SDM</span>
+                </div>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-phone"></i>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="+62 (21) 5088-9100"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Website Resmi</span>
+                </div>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-globe"></i>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="https://nebula.co.id"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <div class="form-label">
+                  <span>Alamat Kantor Pusat & Domisili Operasional</span>
+                </div>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                  <textarea class="form-control">
+Menara Sudirman Lt. 28, Jl. Jend. Sudirman Kav. 60, Senayan, Kebayoran Baru, Jakarta Selatan 12190</textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Toggles -->
+            <div>
+              <h3 class="sec-title" style="font-size: 18px; margin-bottom: 2px">
+                Kebijakan Portal & Automasi
+              </h3>
+              <p class="sec-desc" style="margin-bottom: 16px">
+                Aturan global hak mandiri karyawan dan automasi pelaporan
+                presensi maupun slip upah.
+              </p>
+
+              <div class="toggles-section">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <div
+                      class="t-icon"
+                      style="
+                        background: rgba(76, 215, 246, 0.1);
+                        color: #4cd7f6;
+                      "
+                    >
+                      <i class="fa-solid fa-user-pen"></i>
+                    </div>
+                    <div>
+                      <div class="t-title">
+                        Izinkan Karyawan Edit Profil Mandiri
+                      </div>
+                      <div class="t-desc">
+                        Karyawan dapat memperbarui alamat & kontak darurat tanpa
+                        persetujuan HR.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="toggle-switch"></div>
+                </div>
+
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <div
+                      class="t-icon"
+                      style="
+                        background: rgba(208, 188, 255, 0.1);
+                        color: #d0bcff;
+                      "
+                    >
+                      <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <div>
+                      <div class="t-title">
+                        Notifikasi Email Otomatis & Slip Gaji
+                      </div>
+                      <div class="t-desc">
+                        Kirimkan slip gaji dalam format PDF terenkripsi setiap
+                        tanggal 25 otomatis.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="toggle-switch"></div>
+                </div>
+
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <div
+                      class="t-icon"
+                      style="
+                        background: rgba(78, 222, 163, 0.1);
+                        color: #4edea3;
+                      "
+                    >
+                      <i class="fa-solid fa-location-crosshairs"></i>
+                    </div>
+                    <div>
+                      <div class="t-title">
+                        Verifikasi GPS & Biometrik Ketat
+                      </div>
+                      <div class="t-desc">
+                        Tolak presensi dari luar radius 50m kantor, dan wajibkan
+                        Face ID di aplikasi mobile.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="toggle-switch"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="form-footer">
+              <button
+                class="btn-outline"
+                style="
+                  padding: 10px 32px;
+                  font-size: 12px;
+                  height: 52px;
+                  border-radius: 12px;
+                "
+              >
+                Batal
+              </button>
+              <div style="display: flex; align-items: center; gap: 24px">
+                <div style="font-size: 11px; color: #bcc9cd">
+                  <span style="font-weight: 500">Terakhir disimpan:</span> Hari
+                  ini, 10:42
+                </div>
+                <button class="btn-primary">
+                  <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

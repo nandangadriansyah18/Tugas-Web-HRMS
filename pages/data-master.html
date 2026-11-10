@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Karyawan - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/data-master.css" />
+  </head>
+
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <h2
+            style="
+              color: #dae2fd;
+              font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+              font-size: 18px;
+              margin: 0;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <i class="fa-solid fa-layer-group" style="color: #4cd7f6"></i>
+            HRMS
+            <span
+              style="
+                color: #bcc9cd;
+                font-weight: 400;
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+              "
+              >Admin</span
+            >
+          </h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html" class="active"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Sidebar Bottom -->
+      <div
+        style="padding: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1)"
+      >
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 36px; height: 36px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                border: 2px solid #000;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="color: #dae2fd; font-weight: 600; font-size: 12px">
+              Sarah Wijaya
+            </div>
+            <div style="color: #bcc9cd; font-size: 11px">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <!-- KONTEN UTAMA -->
+      <main class="main-content">
+        <!-- Top Header Navbar -->
+        <header class="top-header">
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="
+                position: absolute;
+                left: 16px;
+                color: #bcc9cd;
+                font-size: 14px;
+              "
+            ></i>
+            <input
+              type="text"
+              placeholder="Cari karyawan, pengajuan, atau dokumen..."
+            />
+          </div>
+          <div class="header-actions">
+            <div class="date-badge">
+              <i class="fa-regular fa-calendar"></i> Selasa, 6 Oktober 2026
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-bell"></i>
+              <span class="notif-dot">3</span>
+            </div>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div class="header-profile">
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                alt="User"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="color: #bcc9cd; font-size: 10px; padding-right: 8px"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Title & Metrics -->
+        <div class="page-header">
+          <div class="page-title">
+            <div class="portal-badge">
+              PORTAL ADMINISTRASI SDM
+              <span style="margin: 0 4px">•</span> Sistem Terintegrasi v2.4
+            </div>
+            <h1>Manajemen Data Karyawan</h1>
+            <p>
+              Kelola informasi profil, jabatan, status kepegawaian, dan data NIP
+              seluruh karyawan perusahaan.
+            </p>
+          </div>
+
+          <div class="summary-badges">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-right: 8px;
+              "
+            >
+              <span class="summary-label">Total</span>
+              <span class="summary-value" style="color: #4cd7f6">142</span>
+              <span class="summary-label" style="font-weight: 400">Staf</span>
+            </div>
+
+            <div class="summary-item aktif">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: #4edea3;
+                  border-radius: 50%;
+                  box-shadow: 0 0 8px rgba(78, 222, 163, 0.8);
+                "
+              ></div>
+              <span class="summary-label">Aktif</span>
+              <span class="summary-value" style="color: #4edea3">135</span>
+            </div>
+
+            <div class="summary-item non-aktif">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: #ffb4ab;
+                  border-radius: 50%;
+                "
+              ></div>
+              <span class="summary-label">Non-Aktif</span>
+              <span class="summary-value" style="color: #ffb4ab">2</span>
+            </div>
+
+            <div class="summary-item cuti">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  background: #d0bcff;
+                  border-radius: 50%;
+                  box-shadow: 0 0 8px rgba(208, 188, 255, 0.8);
+                "
+              ></div>
+              <span class="summary-label">Cuti</span>
+              <span class="summary-value" style="color: #d0bcff">5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control Bar (Glass Panel) -->
+        <div class="control-bar glass-panel">
+          <div class="control-left">
+            <div class="header-search" style="width: 100%">
+              <i
+                class="fa-solid fa-search"
+                style="
+                  position: absolute;
+                  left: 16px;
+                  color: #bcc9cd;
+                  font-size: 14px;
+                "
+              ></i>
+              <input type="text" placeholder="Cari NIP atau Nama Karyawan..." />
+            </div>
+          </div>
+          <div class="control-right">
+            <div class="filter-select">
+              Semua Departemen
+              <i
+                class="fa-solid fa-chevron-down"
+                style="font-size: 10px; color: #bcc9cd"
+              ></i>
+            </div>
+            <div class="filter-select">
+              Semua Status
+              <i
+                class="fa-solid fa-sliders"
+                style="font-size: 12px; color: #bcc9cd"
+              ></i>
+            </div>
+            <button class="btn-export">
+              <i class="fa-solid fa-download" style="color: #d0bcff"></i> Ekspor
+            </button>
+            <button
+              class="btn-primary"
+              onclick="window.location.href = 'form.html'"
+            >
+              <i class="fa-solid fa-user-plus"></i> Tambah Karyawan
+            </button>
+          </div>
+        </div>
+
+        <!-- Data Table Card -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 40px; padding-left: 24px">
+                    <input type="checkbox" class="custom-checkbox" />
+                  </th>
+                  <th>NIP</th>
+                  <th>NAMA LENGKAP</th>
+                  <th>DEPARTEMEN</th>
+                  <th>JABATAN</th>
+                  <th>TGL BERGABUNG</th>
+                  <th>STATUS</th>
+                  <th style="text-align: right; padding-right: 24px">AKSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding-left: 24px">
+                    <input type="checkbox" class="custom-checkbox" />
+                  </td>
+                  <td><span class="nip-badge">EMP-0089</span></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar bs">
+                        <div
+                          style="
+                            background: #0b1326;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          BS
+                        </div>
+                      </div>
+                      <div>
+                        <div style="font-weight: 600; font-size: 14px">
+                          Budi Santoso
+                        </div>
+                        <div
+                          style="
+                            color: rgba(188, 201, 205, 0.8);
+                            font-size: 12px;
+                            margin-top: 2px;
+                          "
+                        >
+                          budi.santoso@company.co.id
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="dept-badge dept-it"
+                      ><span class="dot"></span> IT & Engineering</span
+                    >
+                  </td>
+                  <td>Senior Frontend Engineer</td>
+                  <td>12 Jan 2021</td>
+                  <td>
+                    <span class="status-badge status-aktif"
+                      ><span class="dot"></span> Aktif</span
+                    >
+                  </td>
+                  <td>
+                    <div class="action-btns" style="justify-content: flex-end">
+                      <button class="action-btn">
+                        <i class="fa-solid fa-eye" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="fa-solid fa-pen" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i
+                          class="fa-solid fa-trash"
+                          style="font-size: 12px"
+                        ></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px">
+                    <input type="checkbox" class="custom-checkbox" />
+                  </td>
+                  <td><span class="nip-badge">EMP-0104</span></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar sn">
+                        <div
+                          style="
+                            background: #0b1326;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          SN
+                        </div>
+                      </div>
+                      <div>
+                        <div style="font-weight: 600; font-size: 14px">
+                          Siti Nurhaliza
+                        </div>
+                        <div
+                          style="
+                            color: rgba(188, 201, 205, 0.8);
+                            font-size: 12px;
+                            margin-top: 2px;
+                          "
+                        >
+                          siti.nurhaliza@company.co.id
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="dept-badge dept-marketing"
+                      ><span class="dot"></span> Marketing & Creative</span
+                    >
+                  </td>
+                  <td>Brand Specialist</td>
+                  <td>05 Mei 2022</td>
+                  <td>
+                    <span class="status-badge status-cuti"
+                      ><span class="dot"></span> Cuti</span
+                    >
+                  </td>
+                  <td>
+                    <div class="action-btns" style="justify-content: flex-end">
+                      <button class="action-btn">
+                        <i class="fa-solid fa-eye" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="fa-solid fa-pen" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i
+                          class="fa-solid fa-trash"
+                          style="font-size: 12px"
+                        ></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px">
+                    <input type="checkbox" class="custom-checkbox" />
+                  </td>
+                  <td><span class="nip-badge">EMP-0042</span></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar dp">
+                        <div
+                          style="
+                            background: #0b1326;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          DP
+                        </div>
+                      </div>
+                      <div>
+                        <div style="font-weight: 600; font-size: 14px">
+                          Dimas Pratama
+                        </div>
+                        <div
+                          style="
+                            color: rgba(188, 201, 205, 0.8);
+                            font-size: 12px;
+                            margin-top: 2px;
+                          "
+                        >
+                          dimas.pratama@company.co.id
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="dept-badge dept-finance"
+                      ><span class="dot"></span> Finance & Operations</span
+                    >
+                  </td>
+                  <td>Senior Financial Analyst</td>
+                  <td>18 Agu 2019</td>
+                  <td>
+                    <span class="status-badge status-aktif"
+                      ><span class="dot"></span> Aktif</span
+                    >
+                  </td>
+                  <td>
+                    <div class="action-btns" style="justify-content: flex-end">
+                      <button class="action-btn">
+                        <i class="fa-solid fa-eye" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="fa-solid fa-pen" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i
+                          class="fa-solid fa-trash"
+                          style="font-size: 12px"
+                        ></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px">
+                    <input type="checkbox" class="custom-checkbox" />
+                  </td>
+                  <td><span class="nip-badge">EMP-0121</span></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar ap">
+                        <div
+                          style="
+                            background: #0b1326;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          AP
+                        </div>
+                      </div>
+                      <div>
+                        <div style="font-weight: 600; font-size: 14px">
+                          Amanda Putri
+                        </div>
+                        <div
+                          style="
+                            color: rgba(188, 201, 205, 0.8);
+                            font-size: 12px;
+                            margin-top: 2px;
+                          "
+                        >
+                          amanda.putri@company.co.id
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="dept-badge dept-hr"
+                      ><span class="dot"></span> Human Resources</span
+                    >
+                  </td>
+                  <td>Talent Acquisition Lead</td>
+                  <td>01 Feb 2023</td>
+                  <td>
+                    <span class="status-badge status-aktif"
+                      ><span class="dot"></span> Aktif</span
+                    >
+                  </td>
+                  <td>
+                    <div class="action-btns" style="justify-content: flex-end">
+                      <button class="action-btn">
+                        <i class="fa-solid fa-eye" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="fa-solid fa-pen" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i
+                          class="fa-solid fa-trash"
+                          style="font-size: 12px"
+                        ></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 24px">
+                    <input type="checkbox" class="custom-checkbox" />
+                  </td>
+                  <td><span class="nip-badge">EMP-0077</span></td>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar rr">
+                        <div
+                          style="
+                            background: #0b1326;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          RR
+                        </div>
+                      </div>
+                      <div>
+                        <div style="font-weight: 600; font-size: 14px">
+                          Rizky Ramadhan
+                        </div>
+                        <div
+                          style="
+                            color: rgba(188, 201, 205, 0.8);
+                            font-size: 12px;
+                            margin-top: 2px;
+                          "
+                        >
+                          rizky.ramadhan@company.co.id
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="dept-badge dept-it"
+                      ><span class="dot"></span> IT & Engineering</span
+                    >
+                  </td>
+                  <td>DevOps & Cloud Architect</td>
+                  <td>10 Nov 2020</td>
+                  <td>
+                    <span class="status-badge status-aktif"
+                      ><span class="dot"></span> Aktif</span
+                    >
+                  </td>
+                  <td>
+                    <div class="action-btns" style="justify-content: flex-end">
+                      <button class="action-btn">
+                        <i class="fa-solid fa-eye" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="fa-solid fa-pen" style="font-size: 12px"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i
+                          class="fa-solid fa-trash"
+                          style="font-size: 12px"
+                        ></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Pagination -->
+          <div class="table-footer">
+            <div style="font-size: 12px; color: #bcc9cd">
+              Menampilkan 1 - 5 dari 142 Karyawan
+            </div>
+            <div class="pagination">
+              <button class="page-btn">
+                <i class="fa-solid fa-chevron-left" style="font-size: 10px"></i>
+              </button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <span
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #bcc9cd;
+                  padding: 0 4px;
+                "
+                >...</span
+              >
+              <button class="page-btn">29</button>
+              <button class="page-btn">
+                <i
+                  class="fa-solid fa-chevron-right"
+                  style="font-size: 10px"
+                ></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Bento Grid -->
+        <div class="bottom-grid">
+          <!-- Insight 1 -->
+          <div class="insight-card">
+            <div>
+              <h3>
+                Komposisi Divisi
+                <i
+                  class="fa-solid fa-chart-pie"
+                  style="color: #4cd7f6; font-size: 14px"
+                ></i>
+              </h3>
+              <div class="progress-list">
+                <div class="progress-item">
+                  <div class="progress-label">
+                    <span>IT & Rekayasa Perangkat Lunak</span>
+                    <span style="color: #4cd7f6; font-weight: 600">48%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      style="
+                        width: 48%;
+                        background: #4cd7f6;
+                        box-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div class="progress-item">
+                  <div class="progress-label">
+                    <span>Operasional & Keuangan</span>
+                    <span style="color: #4edea3; font-weight: 600">27%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      style="
+                        width: 27%;
+                        background: #4edea3;
+                        box-shadow: 0 0 8px rgba(78, 222, 163, 0.6);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div class="progress-item">
+                  <div class="progress-label">
+                    <span>Pemasaran & SDM</span>
+                    <span style="color: #d0bcff; font-weight: 600">25%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      style="
+                        width: 25%;
+                        background: #d0bcff;
+                        box-shadow: 0 0 8px rgba(208, 188, 255, 0.6);
+                      "
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Insight 2 -->
+          <div
+            class="insight-card"
+            style="background: rgba(255, 255, 255, 0.04)"
+          >
+            <div>
+              <h3>
+                Karyawan Baru Bulan Ini
+                <span
+                  style="
+                    background: rgba(6, 182, 212, 0.2);
+                    border: 1px solid rgba(76, 215, 246, 0.3);
+                    color: #4cd7f6;
+                    padding: 2px 8px;
+                    border-radius: 9999px;
+                    font-size: 10px;
+                    font-weight: 600;
+                  "
+                  >+4 Staf</span
+                >
+              </h3>
+              <p>
+                3 kandidat telah menyelesaikan orientasi NIP, 1 kandidat
+                menunggu verifikasi berkas NPWP & BPJS.
+              </p>
+            </div>
+            <div class="card-footer-text">
+              <i class="fa-solid fa-circle-check" style="color: #4edea3"></i>
+              Tingkat Retensi Kuartal II: 98.4%
+            </div>
+          </div>
+
+          <!-- Insight 3 -->
+          <div
+            class="insight-card"
+            style="
+              background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.07) 0%,
+                rgba(87, 27, 193, 0.1) 100%
+              );
+            "
+          >
+            <div>
+              <h3>
+                Sinkronisasi Payroll
+                <i
+                  class="fa-solid fa-arrows-rotate"
+                  style="color: #d0bcff; font-size: 14px"
+                ></i>
+              </h3>
+              <p>
+                Data NIP terkini disinkronkan secara otomatis dengan modul
+                penggajian periode akhir bulan Oktober 2026.
+              </p>
+            </div>
+            <div
+              class="card-footer-text"
+              style="justify-content: space-between"
+            >
+              <span
+                ><span style="color: #e9ddff; font-weight: 600">Status:</span>
+                Sinkron 100%</span
+              >
+              <a
+                href="#"
+                style="color: #4cd7f6; text-decoration: none; font-weight: 600"
+                >Lihat Ledger
+                <i class="fa-solid fa-arrow-right" style="font-size: 10px"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

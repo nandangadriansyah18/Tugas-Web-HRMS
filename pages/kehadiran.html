@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manajemen Kehadiran & Cuti - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Liberation+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/presensi.css" />
+  </head>
+
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <img
+              src="https://via.placeholder.com/32/4CD7F6/000?text=H"
+              style="width: 32px; height: 32px; border-radius: 8px"
+              alt="Logo"
+            />
+            <div style="display: flex; flex-direction: column">
+              <h2
+                style="
+                  color: #dae2fd;
+                  font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                  font-size: 18px;
+                  margin: 0;
+                  line-height: 1;
+                "
+              >
+                HRMS
+              </h2>
+              <span style="color: #dae2fd; font-size: 14px">Admin</span>
+            </div>
+          </div>
+          <span class="enterprise-badge">Enterprise</span>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html" class="active"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Sidebar Bottom -->
+      <div style="padding: 20px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, 0.18);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 40px; height: 40px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                border: 2px solid #0b1326;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="color: #dae2fd; font-weight: 600; font-size: 12px">
+              Sarah Wijaya
+            </div>
+            <div style="color: #bcc9cd; font-size: 12px">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-search">
+            <i class="fa-solid fa-search"></i>
+            <input
+              type="text"
+              placeholder="Cari karyawan, pengajuan, atau dokumen..."
+            />
+          </div>
+          <div class="header-actions">
+            <div class="date-badge">
+              <i class="fa-regular fa-calendar"></i> Sel, 6 Oktober 2026
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="icon-btn">
+              <i class="fa-regular fa-bell"></i>
+              <span class="notif-dot">3</span>
+            </div>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div class="header-profile">
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                alt="User"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="color: #bcc9cd; font-size: 10px"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Title Area -->
+        <div class="page-header-area">
+          <div class="page-info">
+            <div class="breadcrumb">
+              Portal Administrasi SDM
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              Presensi & Cuti
+              <i class="fa-solid fa-chevron-right" style="font-size: 8px"></i>
+              <span>Monitoring Real-Time</span>
+            </div>
+            <div class="page-title-row">
+              <h1>Manajemen Kehadiran & Cuti</h1>
+            </div>
+            <div class="badge-sync" style="width: fit-content; margin-top: 4px">
+              <div class="dot"></div>
+              Sinkronisasi Langsung: 08:45 WIB
+            </div>
+            <p class="page-subtitle">
+              Pantau presensi harian karyawan secara real-time, verifikasi log
+              biometrik, dan kelola permohonan cuti staf terpusat dalam satu
+              ruang kendali.
+            </p>
+          </div>
+
+          <div class="action-controls">
+            <button class="btn-dropdown">
+              <i class="fa-regular fa-calendar"></i> Selasa, 6 Oktober 2026
+              <i class="fa-solid fa-chevron-down caret"></i>
+            </button>
+            <button class="btn-secondary">
+              <i class="fa-solid fa-download"></i> Ekspor Log
+            </button>
+            <button class="btn-primary admin-only">
+              <i class="fa-solid fa-plus"></i> Catat Presensi Manual
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="analytics-grid">
+          <!-- Card 1 -->
+          <div class="analytics-card card-1">
+            <div class="card-header">
+              <div class="title-group">
+                <div class="icon-box icon-box-cyan">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                  <div class="card-title-sub">STAF AKTIF BEKERJA</div>
+                  <div class="card-title-main">Total Hadir Hari Ini</div>
+                </div>
+              </div>
+              <div class="badge-trend">+3.6% vs Kemarin</div>
+            </div>
+
+            <div>
+              <div class="card-1-value">
+                135 <span class="sub">/ 142 Staf</span>
+                <span class="pct">95.1%</span>
+              </div>
+
+              <div class="progress-segment">
+                <div class="progress-track">
+                  <div class="fill-cyan"></div>
+                  <div class="fill-red"></div>
+                </div>
+                <div class="progress-labels">
+                  <span>Kapasitas Kantor Terisi</span>
+                  <span>Target Min: 90%</span>
+                </div>
+              </div>
+
+              <div class="status-pills">
+                <div class="pill">
+                  <div class="dot-green"></div>
+                  Tepat Waktu: 128
+                </div>
+                <div class="pill">
+                  <div class="dot-red"></div>
+                  Terlambat: 7
+                </div>
+                <div class="pill">
+                  <i class="fa-solid fa-laptop-house"></i> WFH: 24
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="analytics-card card-2">
+            <div class="card-header">
+              <div class="title-group">
+                <div class="icon-box icon-box-purple">
+                  <i class="fa-regular fa-calendar-xmark"></i>
+                </div>
+                <div>
+                  <div class="card-title-sub">ABSENSI</div>
+                  <div
+                    class="card-title-main"
+                    style="font-size: 16px; margin-top: 2px"
+                  >
+                    TERKONFIRMASI<br />Cuti & Izin Hari Ini
+                  </div>
+                </div>
+              </div>
+              <div class="badge-deviasi">4.9%<br />Deviasi</div>
+            </div>
+
+            <div>
+              <div class="card-1-value" style="margin-top: 10px">
+                7 <span class="sub">Staf Absen</span>
+              </div>
+
+              <div class="breakdown-tags">
+                <div class="b-tag">
+                  <div class="d-purp"></div>
+                  Cuti Tahunan: <span class="b-val-purp">4</span>
+                </div>
+                <div class="b-tag">
+                  <div class="d-cyan"></div>
+                  Sakit: <span class="b-val-cyan">2</span>
+                </div>
+                <div class="b-tag red">
+                  <div class="d-red"></div>
+                  Alpha: <span class="b-val-red">1</span>
+                </div>
+              </div>
+
+              <div class="card-footer-link">
+                <div class="cfl-text">
+                  <i class="fa-solid fa-file-invoice"></i> 2 Permohonan menunggu
+                  verifikasi HR
+                </div>
+                <a href="#" class="cfl-btn"
+                  >Proses <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="analytics-card card-3">
+            <div class="c3-header">
+              <span class="c3-title">METRIK RATA-RATA</span>
+              <i
+                class="fa-solid fa-chart-line"
+                style="color: #4cd7f6; font-size: 14px"
+              ></i>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 8px;
+              "
+            >
+              <div class="metric-box">
+                <div class="mb-left">
+                  <i
+                    class="fa-regular fa-clock"
+                    style="color: #4cd7f6; font-size: 16px"
+                  ></i>
+                  <div class="mb-info">
+                    <span class="mb-label">Rata-rata Jam Masuk</span>
+                    <span class="mb-val">08:14 WIB</span>
+                  </div>
+                </div>
+                <span class="mb-badge mb-b-green">Normal</span>
+              </div>
+
+              <div class="metric-box">
+                <div class="mb-left">
+                  <i
+                    class="fa-solid fa-stopwatch"
+                    style="color: #d0bcff; font-size: 16px"
+                  ></i>
+                  <div class="mb-info">
+                    <span class="mb-label">Lembur Terjadwal</span>
+                    <span class="mb-val">18 Staf</span>
+                  </div>
+                </div>
+                <span class="mb-badge mb-b-gray">3 Departemen</span>
+              </div>
+            </div>
+
+            <div class="c3-footer">
+              <span class="c3f-text">Lokasi: Sudirman Tower</span>
+              <div class="c3f-status">
+                <div class="dot"></div>
+                Terminal Aktif
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segmented Filter Bar -->
+        <div class="filter-toolbar">
+          <div class="tab-controls">
+            <button class="tab-btn active">
+              <i class="fa-solid fa-list-check"></i> Presensi Harian
+              <span class="tab-badge">135 Masuk</span>
+            </button>
+            <button class="tab-btn">
+              <i class="fa-solid fa-plane-departure"></i> Pengajuan Cuti & Izin
+              <span class="tab-badge">5 Menunggu</span>
+            </button>
+            <button class="tab-btn">
+              <i class="fa-solid fa-calendar-days"></i> Jadwal Shift & WFH
+            </button>
+          </div>
+          <div class="filter-right">
+            <button class="btn-icon-square">
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </button>
+            <div class="search-box">
+              <i class="fa-solid fa-search"></i>
+              <input type="text" placeholder="Cari staf, NIP, departemen..." />
+            </div>
+            <button class="filter-dropdown">
+              Semua Status <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button class="filter-dropdown">
+              Semua Departemen <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-container">
+          <div class="table-header-info">
+            <div class="th-title-group">
+              <div class="th-title-row">
+                <h2>Log Presensi Hari Ini</h2>
+                <div class="th-date-badge">6 Oktober 2026</div>
+              </div>
+              <p class="th-subtitle">
+                Menampilkan 1 - 7 dari total 135 catatan presensi realtime
+              </p>
+            </div>
+            <div class="th-device-status">
+              <div class="dot"></div>
+              Perangkat WFO: Online (Gate-01 & Gate-02)
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>KARYAWAN</th>
+                  <th>DEPARTEMEN</th>
+                  <th>JAM MASUK</th>
+                  <th>JAM KELUAR</th>
+                  <th>VERIFIKASI LOKASI</th>
+                  <th>STATUS</th>
+                  <th>AKSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row 1 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <img
+                        src="https://ui-avatars.com/api/?name=Budi+Santoso&background=1B1C22&color=fff"
+                        class="emp-avatar"
+                        alt="Avatar"
+                      />
+                      <div>
+                        <h4 class="emp-name">Budi Santoso</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-0042</span> • Lead Backend
+                          Dev
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag">IT & Engineering</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val">07:54 WIB</h4>
+                    <p class="time-sch">Jadwal: 08:00</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-green"></div>
+                      Masih Bekerja
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-location-dot"></i>
+                      <span class="loc-text">WFO Sudirman (Gate A)</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-green">
+                      <i class="fa-solid fa-check-circle"></i> Tepat Waktu
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <img
+                        src="https://ui-avatars.com/api/?name=Siti+Nurhaliza&background=1B1C22&color=fff"
+                        class="emp-avatar"
+                        alt="Avatar"
+                      />
+                      <div>
+                        <h4 class="emp-name">Siti Nurhaliza</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-0014</span> • People
+                          Operations
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag hr">Human Resources</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val">08:02 WIB</h4>
+                    <p class="time-sch">Jadwal: 08:30</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-green"></div>
+                      Masih Bekerja
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-location-dot"></i>
+                      <span class="loc-text">WFO Sudirman (HR Floor)</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-green">
+                      <i class="fa-solid fa-check-circle"></i> Tepat Waktu
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <div
+                        class="emp-avatar"
+                        style="
+                          background: rgba(147, 0, 10, 0.3);
+                          color: #ffb4ab;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-weight: 700;
+                          font-size: 14px;
+                        "
+                      >
+                        DP
+                      </div>
+                      <div>
+                        <h4 class="emp-name">Dimas Pratama</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-1102</span> • Growth
+                          Marketer
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag">Marketing & Growth</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val red">08:34 WIB</h4>
+                    <p class="time-sch red">Telat 34 Menit</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-green"></div>
+                      Masih Bekerja
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-location-dot red"></i>
+                      <span class="loc-text">WFO Sudirman (Lantai 5)</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-red">
+                      <i class="fa-solid fa-circle-exclamation"></i> Terlambat
+                      (34 mnt)
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <img
+                        src="https://ui-avatars.com/api/?name=Amanda+Putri&background=1B1C22&color=fff"
+                        class="emp-avatar"
+                        alt="Avatar"
+                      />
+                      <div>
+                        <h4 class="emp-name">Amanda Putri</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-0761</span> • Product
+                          Designer
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag">Product & UX</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val">07:48 WIB</h4>
+                    <p class="time-sch">Jadwal: 08:00</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-green"></div>
+                      Masih Bekerja
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-laptop-house cyan"></i>
+                      <span class="loc-text cyan"
+                        >WFH Terverifikasi (GPS Valid)</span
+                      >
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-cyan">
+                      <i class="fa-solid fa-laptop-house"></i> WFH / Remote
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <div
+                        class="emp-avatar"
+                        style="
+                          background: rgba(6, 182, 212, 0.2);
+                          color: #4cd7f6;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-weight: 700;
+                          font-size: 14px;
+                        "
+                      >
+                        RR
+                      </div>
+                      <div>
+                        <h4 class="emp-name">Rizky Ramadhan</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-0533</span> • Financial
+                          Analyst
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag hr">Finance & Tax</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val">08:11 WIB</h4>
+                    <p class="time-sch">Jadwal: 08:30</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-green"></div>
+                      Masih Bekerja
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-location-dot"></i>
+                      <span class="loc-text">WFO Sudirman (Lantai 9)</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-green">
+                      <i class="fa-solid fa-check-circle"></i> Tepat Waktu
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <div
+                        class="emp-avatar"
+                        style="
+                          background: rgba(87, 27, 193, 0.3);
+                          color: #e9ddff;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-weight: 700;
+                          font-size: 14px;
+                        "
+                      >
+                        HG
+                      </div>
+                      <div>
+                        <h4 class="emp-name">Hendra Gunawan</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-0418</span> • Senior Account
+                          Exc
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag">Business Dev</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val" style="color: #d0bcff">08:00 WIB</h4>
+                    <p class="time-sch">Dinas Luar</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-purple"></div>
+                      Kunjungan Klien
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-briefcase purple"></i>
+                      <span class="loc-text purple"
+                        >Klien: PT Telkom Landmark</span
+                      >
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-purple">
+                      <i class="fa-solid fa-plane"></i> Dinas Luar Kota
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 7 -->
+                <tr>
+                  <td>
+                    <div class="emp-profile">
+                      <div
+                        class="emp-avatar"
+                        style="
+                          background: rgba(27, 189, 133, 0.3);
+                          color: #4edea3;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-weight: 700;
+                          font-size: 14px;
+                        "
+                      >
+                        DL
+                      </div>
+                      <div>
+                        <h4 class="emp-name">Dewi Lestari</h4>
+                        <div class="emp-role">
+                          <span class="emp-nip">NIP-0588</span> • Operations
+                          Manager
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="dept-tag">Operations</div></td>
+                  <td class="time-cell">
+                    <h4 class="time-val">07:35 WIB</h4>
+                    <p class="time-sch" style="color: #4edea3">Shift Pagi</p>
+                  </td>
+                  <td>
+                    <div class="status-pill">
+                      <div class="dot dot-green"></div>
+                      Masih Bekerja
+                    </div>
+                  </td>
+                  <td>
+                    <div class="loc-cell">
+                      <i class="fa-solid fa-location-dot"></i>
+                      <span class="loc-text">WFO Sudirman (Hub Ops)</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="verif-badge vb-green">
+                      <i class="fa-solid fa-check-circle"></i> Tepat Waktu
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Footer -->
+          <div class="table-footer">
+            <span class="footer-info"
+              >Menampilkan 1 - 7 dari 135 data presensi</span
+            >
+            <div class="pagination">
+              <button class="page-btn disabled">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <span
+                style="color: #bcc9cd; font-family: monospace; padding: 0 4px"
+                >...</span
+              >
+              <button class="page-btn">20</button>
+              <button class="page-btn">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

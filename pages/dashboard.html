@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - HRMS Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Liberation+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/pages/dashboard.css" />
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <!-- Background Blobs -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div style="padding: 24px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+          "
+        >
+          <div
+            style="
+              width: 32px;
+              height: 32px;
+              background: #4cd7f6;
+              border-radius: 8px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #000;
+              font-weight: bold;
+            "
+          >
+            H
+          </div>
+          <div>
+            <h2
+              style="
+                margin: 0;
+                font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                font-size: 18px;
+                color: #dae2fd;
+              "
+            >
+              HRMS
+            </h2>
+            <div
+              style="
+                background: rgba(87, 27, 193, 0.3);
+                border: 1px solid rgba(233, 221, 255, 0.3);
+                border-radius: 9999px;
+                padding: 2px 8px;
+                font-size: 10px;
+                color: #e9ddff;
+                display: inline-block;
+                margin-top: 4px;
+              "
+            >
+              Admin
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html" class="active"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div style="padding: 20px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, 0.18);
+          "
+        >
+          <div style="position: relative">
+            <img
+              src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+              style="width: 40px; height: 40px; border-radius: 50%"
+              alt="Profile"
+            />
+            <div
+              style="
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: #4edea3;
+                border-radius: 50%;
+                right: 0;
+                bottom: 0;
+                border: 2px solid #0b1326;
+              "
+            ></div>
+          </div>
+          <div>
+            <div style="font-size: 12px; font-weight: 600; color: #dae2fd">
+              Sarah Wijaya
+            </div>
+            <div style="font-size: 12px; color: #bcc9cd">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="admin-layout">
+      <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="position: absolute; left: 16px; color: #bcc9cd"
+            ></i>
+            <input
+              type="text"
+              placeholder="Cari karyawan, pengajuan, atau dokumen..."
+            />
+          </div>
+          <div class="header-actions">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 9999px;
+                padding: 6px 12px;
+                font-size: 10px;
+                color: #bcc9cd;
+                font-weight: 600;
+              "
+            >
+              <i class="fa-regular fa-calendar" style="color: #4cd7f6"></i>
+              Selasa, 6 Oktober 2026
+            </div>
+            <button class="btn-icon-sq">
+              <i class="fa-regular fa-envelope"></i>
+            </button>
+            <button class="btn-icon-sq" style="position: relative">
+              <i class="fa-regular fa-bell"></i>
+              <span
+                style="
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  width: 6px;
+                  height: 6px;
+                  background: #ffb4ab;
+                  border-radius: 50%;
+                "
+              ></span>
+            </button>
+            <div
+              style="
+                width: 1px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.15);
+              "
+            ></div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 9999px;
+                padding: 4px 8px 4px 4px;
+                cursor: pointer;
+              "
+            >
+              <img
+                src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=1B1C22&color=fff"
+                style="width: 32px; height: 32px; border-radius: 50%"
+              />
+              <i
+                class="fa-solid fa-chevron-down"
+                style="font-size: 10px; color: #bcc9cd"
+              ></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+          <div class="wb-glow-1"></div>
+          <div class="wb-glow-2"></div>
+
+          <div class="wb-content">
+            <div class="wb-title-row">
+              <h1 class="wb-title">Selamat Datang, Sarah Wijaya 👋</h1>
+              <div class="live-badge">
+                <div class="live-dot"></div>
+                Live Sync
+              </div>
+            </div>
+            <p class="wb-subtitle">
+              Ringkasan aktivitas kepegawaian dan kehadiran karyawan per hari
+              ini.
+            </p>
+          </div>
+
+          <div class="wb-actions">
+            <button class="btn-wb-outline">
+              <i class="fa-regular fa-calendar" style="color: #4cd7f6"></i>
+              Bulan ini (Oktober 2026)
+              <i
+                class="fa-solid fa-chevron-down"
+                style="font-size: 10px; margin-left: 4px"
+              ></i>
+            </button>
+            <button class="btn-wb-outline">
+              <i class="fa-solid fa-download"></i> Ekspor Laporan
+            </button>
+            <button class="btn-wb-primary">
+              <i class="fa-solid fa-user-plus" style="color: #00424f"></i>
+              Tambah Karyawan
+            </button>
+          </div>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="metrics-grid">
+          <!-- Card 1 -->
+          <div class="metric-card">
+            <div class="mc-top">
+              <div>
+                <div class="mc-label">Total Karyawan</div>
+                <div class="mc-value">142</div>
+              </div>
+              <div class="mc-icon cyan"><i class="fa-solid fa-users"></i></div>
+            </div>
+            <div class="mc-bottom">
+              <span class="mc-badge cyan"
+                ><i class="fa-solid fa-arrow-trend-up"></i> +3 bulan ini</span
+              >
+              <span class="mc-desc">vs Mei (139)</span>
+            </div>
+            <div class="mc-bar-bg">
+              <div class="mc-bar-fill cyan"></div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="metric-card">
+            <div class="mc-top">
+              <div>
+                <div class="mc-label">Hadir Hari Ini</div>
+                <div class="mc-value">135</div>
+              </div>
+              <div class="mc-icon green">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+            </div>
+            <div class="mc-bottom">
+              <span class="mc-badge green"
+                ><i class="fa-solid fa-check"></i> 95% Kehadiran</span
+              >
+              <span class="mc-desc">7 belum absen</span>
+            </div>
+            <div class="mc-bar-bg">
+              <div class="mc-bar-fill green"></div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="metric-card">
+            <div class="mc-top">
+              <div>
+                <div class="mc-label">Sedang Cuti</div>
+                <div class="mc-value">5</div>
+              </div>
+              <div class="mc-icon yellow">
+                <i class="fa-regular fa-calendar-minus"></i>
+              </div>
+            </div>
+            <div class="mc-bottom">
+              <span class="mc-badge yellow"
+                ><i class="fa-regular fa-clock"></i> Pending: 2</span
+              >
+              <span class="mc-desc">3 Tahunan, 2 Sakit</span>
+            </div>
+            <div class="mc-bar-bg">
+              <div class="mc-bar-fill yellow"></div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="metric-card">
+            <div class="mc-top">
+              <div>
+                <div class="mc-label">Izin / Sakit</div>
+                <div class="mc-value">2</div>
+              </div>
+              <div class="mc-icon purple">
+                <i class="fa-solid fa-briefcase-medical"></i>
+              </div>
+            </div>
+            <div class="mc-bottom">
+              <span class="mc-badge purple"
+                ><i class="fa-solid fa-shield-check"></i> Terverifikasi</span
+              >
+              <span class="mc-desc">Surat dokter 1</span>
+            </div>
+            <div class="mc-bar-bg">
+              <div class="mc-bar-fill purple"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Section -->
+        <div class="analytics-grid">
+          <!-- Area Chart Panel -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Tren Kehadiran Karyawan</h3>
+                <p class="panel-subtitle">
+                  Monitoring kepatuhan jam kerja Semester 1 (Januari - Oktober
+                  2026)
+                </p>
+              </div>
+              <div class="time-filters">
+                <button class="tf-btn active">6 Bulan</button>
+                <button class="tf-btn">3 Bulan</button>
+                <button class="tf-btn">1 Bulan</button>
+              </div>
+            </div>
+
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="leg-color leg-cyan"></div>
+                Tingkat Hadir (%)
+              </div>
+              <div class="legend-item">
+                <div class="leg-color leg-yellow"></div>
+                Terlambat
+              </div>
+              <div class="legend-item">
+                <div class="leg-color leg-purple"></div>
+                Cuti & Sakit
+              </div>
+              <div style="flex: 1"></div>
+              <div class="legend-item">
+                <div class="leg-color leg-dashed"></div>
+                Target (92%)
+              </div>
+            </div>
+
+            <div
+              class="chart-container"
+              style="position: relative; height: 250px; width: 100%"
+            >
+              <canvas id="trendChartCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Donut Chart Panel -->
+          <div class="panel">
+            <div
+              class="panel-header"
+              style="
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                padding-bottom: 16px;
+                margin-bottom: 0;
+              "
+            >
+              <div>
+                <h3 class="panel-title">Komposisi Departemen</h3>
+                <p class="panel-subtitle">
+                  Distribusi tenaga kerja lintas divisi
+                </p>
+              </div>
+              <button
+                style="
+                  background: rgba(255, 255, 255, 0.05);
+                  border: none;
+                  width: 32px;
+                  height: 32px;
+                  border-radius: 8px;
+                  color: #bcc9cd;
+                  cursor: pointer;
+                "
+              >
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+            </div>
+
+            <div class="donut-container">
+              <div class="donut-wrapper">
+                <!-- Chart.js Canvas -->
+                <canvas
+                  id="deptChartCanvas"
+                  width="176"
+                  height="176"
+                  style="display: block; width: 176px; height: 176px"
+                ></canvas>
+                <div class="donut-center">
+                  <div class="val">142</div>
+                  <div class="lbl">KARYAWAN</div>
+                </div>
+              </div>
+
+              <div class="dept-list">
+                <div class="dept-item">
+                  <div class="dept-left">
+                    <div class="d-dot cyan"></div>
+                    <span class="d-name">IT & Engineering</span>
+                  </div>
+                  <div class="d-val cyan">52 (36.6%)</div>
+                </div>
+                <div class="dept-item">
+                  <div class="dept-left">
+                    <div class="d-dot purple"></div>
+                    <span class="d-name">Marketing & Creative</span>
+                  </div>
+                  <div class="d-val purple">38 (26.8%)</div>
+                </div>
+                <div class="dept-item">
+                  <div class="dept-left">
+                    <div class="d-dot green"></div>
+                    <span class="d-name">Finance & Operations</span>
+                  </div>
+                  <div class="d-val green">28 (19.7%)</div>
+                </div>
+                <div class="dept-item">
+                  <div class="dept-left">
+                    <div class="d-dot yellow"></div>
+                    <span class="d-name">Human Resources</span>
+                  </div>
+                  <div class="d-val yellow">24 (16.9%)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-panel">
+          <div class="tp-header">
+            <div class="tp-title-area">
+              <h2 class="tp-title">Pengajuan Cuti Terbaru</h2>
+              <span class="badge-new">5 Pengajuan Baru</span>
+            </div>
+            <div class="tp-actions">
+              <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Cari pemohon..." />
+              </div>
+              <div class="status-filters">
+                <button class="sf-btn active">Semua</button>
+                <button class="sf-btn">Menunggu Persetujuan</button>
+                <button class="sf-btn">Disetujui</button>
+                <button class="sf-btn">Ditolak</button>
+              </div>
+            </div>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%">NAMA KARYAWAN</th>
+                <th style="width: 15%">DEPARTEMEN</th>
+                <th style="width: 20%">TANGGAL CUTI</th>
+                <th style="width: 10%">DURASI</th>
+                <th style="width: 10%">JENIS CUTI</th>
+                <th style="width: 10%">STATUS</th>
+                <th style="width: 10%; text-align: right">AKSI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="user-info">
+                    <div class="avatar-grad ag-1">BS</div>
+                    <div>
+                      <div class="u-name">Budi Santoso</div>
+                      <div class="u-id">EMP-0012</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-badge db-it">IT & Eng</span></td>
+                <td>26 Jun - 28 Okt 2026</td>
+                <td>
+                  <div class="dur-badge">
+                    <div class="dur-val">3</div>
+                    <div class="dur-lbl">Hari</div>
+                  </div>
+                </td>
+                <td>Cuti Tahunan</td>
+                <td>
+                  <span class="stat-badge sb-pending"
+                    ><i class="fa-regular fa-clock"></i> Pending</span
+                  >
+                </td>
+                <td>
+                  <div class="action-btns">
+                    <button class="btn-act approve">
+                      <i class="fa-solid fa-check"></i> Setujui
+                    </button>
+                    <button class="btn-act reject">
+                      <i class="fa-solid fa-xmark"></i> Tolak
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-info">
+                    <div class="avatar-grad ag-2">SN</div>
+                    <div>
+                      <div class="u-name">Siti Nurhaliza</div>
+                      <div class="u-id">EMP-0104</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-badge db-mkt">Marketing</span></td>
+                <td>25 Okt 2026</td>
+                <td>
+                  <div class="dur-badge">
+                    <div class="dur-val">1</div>
+                    <div class="dur-lbl">Hari</div>
+                  </div>
+                </td>
+                <td>Izin Urusan Keluarga</td>
+                <td>
+                  <span class="stat-badge sb-pending"
+                    ><i class="fa-regular fa-clock"></i> Pending</span
+                  >
+                </td>
+                <td>
+                  <div class="action-btns">
+                    <button class="btn-act approve">
+                      <i class="fa-solid fa-check"></i> Setujui
+                    </button>
+                    <button class="btn-act reject">
+                      <i class="fa-solid fa-xmark"></i> Tolak
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-info">
+                    <div class="avatar-grad ag-3">DP</div>
+                    <div>
+                      <div class="u-name">Dimas Pratama</div>
+                      <div class="u-id">EMP-0042</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-badge db-fin">Finance</span></td>
+                <td>20 Jun - 21 Okt 2026</td>
+                <td>
+                  <div class="dur-badge">
+                    <div class="dur-val">2</div>
+                    <div class="dur-lbl">Hari</div>
+                  </div>
+                </td>
+                <td>Cuti Sakit</td>
+                <td>
+                  <span class="stat-badge sb-approved"
+                    ><i class="fa-solid fa-check"></i> Approved</span
+                  >
+                </td>
+                <td>
+                  <div class="action-btns">
+                    <button class="btn-act view">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-info">
+                    <div class="avatar-grad ag-4">AP</div>
+                    <div>
+                      <div class="u-name">Amanda Putri</div>
+                      <div class="u-id">EMP-0123</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-badge db-hr">HR</span></td>
+                <td>18 Jun - 19 Okt 2026</td>
+                <td>
+                  <div class="dur-badge">
+                    <div class="dur-val">2</div>
+                    <div class="dur-lbl">Hari</div>
+                  </div>
+                </td>
+                <td>Cuti Tahunan</td>
+                <td>
+                  <span class="stat-badge sb-approved"
+                    ><i class="fa-solid fa-check"></i> Approved</span
+                  >
+                </td>
+                <td>
+                  <div class="action-btns">
+                    <button class="btn-act view">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-info">
+                    <div class="avatar-grad ag-5">RR</div>
+                    <div>
+                      <div class="u-name">Rizky Ramadhan</div>
+                      <div class="u-id">EMP-0077</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-badge db-it">IT & Eng</span></td>
+                <td>15 Okt 2026</td>
+                <td>
+                  <div class="dur-badge">
+                    <div class="dur-val">1</div>
+                    <div class="dur-lbl">Hari</div>
+                  </div>
+                </td>
+                <td>Cuti Pribadi</td>
+                <td>
+                  <span class="stat-badge sb-approved"
+                    ><i class="fa-solid fa-check"></i> Approved</span
+                  >
+                </td>
+                <td>
+                  <div class="action-btns">
+                    <button class="btn-act view">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="tp-footer">
+            <div class="page-info">Menampilkan 1-5 dari 18 pengajuan</div>
+            <div class="pagination">
+              <div class="page-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+              </div>
+              <div class="page-btn active">1</div>
+              <div class="page-btn">2</div>
+              <div class="page-btn">3</div>
+              <div class="page-btn">
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

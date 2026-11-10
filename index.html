@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS - PT Sawit Abadi Tbk | Login</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20261110_1" />
+    <link rel="stylesheet" href="assets/css/pages/login.css?v=20261110_1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body.login-body {
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 100vh !important;
+        background:
+          linear-gradient(135deg, rgba(6, 20, 14, 0.55) 0%, rgba(11, 19, 38, 0.78) 100%),
+          url("assets/img/bg-kebun-sawit.jpg?v=20261110_1") center center / cover no-repeat fixed !important;
+        font-family: "Inter", sans-serif !important;
+        display: flex !important;
+        color: #f8fafc !important;
+      }
+      body.login-body.bg-mode-logo .login-left {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(6, 20, 14, 0.75) 0%,
+            rgba(6, 20, 14, 0.1) 25%,
+            rgba(6, 20, 14, 0.1) 75%,
+            rgba(6, 20, 14, 0.85) 100%
+          ),
+          url("assets/img/logo-sawit-abadi.jpg?v=20261110_1") center center / contain no-repeat #ffffff !important;
+      }
+      .login-container {
+        display: flex !important;
+        width: 100% !important;
+        min-height: 100vh !important;
+      }
+      .login-left {
+        flex: 1.15 !important;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(6, 24, 16, 0.45) 0%,
+            rgba(6, 24, 16, 0.12) 45%,
+            rgba(6, 20, 14, 0.78) 100%
+          ),
+          url("assets/img/bg-kebun-sawit.jpg?v=20261110_1") center center / cover no-repeat !important;
+        position: relative !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding: 40px 48px !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.14) !important;
+      }
+      .login-top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 10;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .login-branding {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        background: rgba(8, 22, 16, 0.78) !important;
+        backdrop-filter: blur(16px) !important;
+        border: 1px solid rgba(78, 222, 163, 0.3) !important;
+        padding: 10px 18px !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+      }
+      .btn-switch-bg {
+        background: rgba(8, 22, 16, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #e2e8f0;
+        padding: 8px 14px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s;
+      }
+      .btn-switch-bg:hover {
+        background: rgba(16, 185, 129, 0.25);
+        border-color: #4edea3;
+        color: #ffffff;
+      }
+      .login-illustration {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 10 !important;
+        margin: 24px 0 !important;
+      }
+      .brand-showcase-card {
+        background: rgba(8, 22, 18, 0.78);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 28px;
+        padding: 32px;
+        max-width: 480px;
+        width: 100%;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      body.login-body.bg-mode-logo .brand-showcase-card {
+        margin-top: auto;
+        padding: 20px 24px;
+      }
+      body.login-body.bg-mode-logo .brand-logo-box {
+        display: none;
+      }
+      .brand-logo-box {
+        width: 190px;
+        height: 190px;
+        margin: 0 auto 20px;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 12px;
+        box-shadow:
+          0 12px 32px rgba(0, 0, 0, 0.4),
+          0 0 0 4px rgba(234, 179, 8, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .brand-logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 16px;
+      }
+      .brand-badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(78, 222, 163, 0.4);
+        color: #4edea3;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 999px;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+      .brand-showcase-card h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        margin: 0 0 10px 0;
+        color: #ffffff;
+        letter-spacing: -0.3px;
+      }
+      .brand-showcase-card p {
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+      }
+      .brand-stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 16px;
+      }
+      .brand-stat-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 10px 8px;
+      }
+      .brand-stat-val {
+        font-size: 15px;
+        font-weight: 800;
+        color: #fbbf24;
+      }
+      .brand-stat-lbl {
+        font-size: 11px;
+        color: #cbd5e1;
+        margin-top: 2px;
+      }
+      .login-left-footer {
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(8, 22, 16, 0.65);
+        backdrop-filter: blur(10px);
+        padding: 10px 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .login-right {
+        flex: 0.85 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(9, 16, 28, 0.82) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 40px !important;
+      }
+      .login-form-wrapper {
+        width: 100% !important;
+        max-width: 420px !important;
+        background: rgba(18, 24, 38, 0.92) !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 24px !important;
+        padding: 36px !important;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55) !important;
+      }
+      .login-form-logo-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .login-form-logo-head img {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        object-fit: contain;
+        background: #ffffff;
+        padding: 3px;
+        border: 2px solid rgba(234, 179, 8, 0.5);
+      }
+
+      /* Fix Input, Autofill, and Eye Toggle Button */
+      .input-with-icon {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+      .input-with-icon > i {
+        position: absolute !important;
+        left: 16px !important;
+        color: #4cd7f6 !important;
+        font-size: 14px !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+      }
+      .input-with-icon input {
+        width: 100% !important;
+        background: #131826 !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 12px !important;
+        padding: 14px 48px 14px 44px !important;
+        color: #f8fafc !important;
+        font-size: 14px !important;
+        font-family: "Inter", sans-serif !important;
+        transition: all 0.25s ease !important;
+        box-sizing: border-box !important;
+      }
+      .input-with-icon input:focus {
+        outline: none !important;
+        border-color: #4cd7f6 !important;
+        background: #172033 !important;
+        box-shadow: 0 0 0 3px rgba(76, 215, 246, 0.15) !important;
+      }
+      /* Prevent Chrome white/blue autofill background */
+      .input-with-icon input:-webkit-autofill,
+      .input-with-icon input:-webkit-autofill:hover,
+      .input-with-icon input:-webkit-autofill:focus,
+      .input-with-icon input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 1000px #131826 inset !important;
+        -webkit-text-fill-color: #f8fafc !important;
+        caret-color: #f8fafc !important;
+        border: 1px solid rgba(76, 215, 246, 0.35) !important;
+        transition: background-color 5000s ease-in-out 0s !important;
+      }
+      .btn-toggle-pass {
+        position: absolute !important;
+        right: 10px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 8px !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #94a3b8 !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 3 !important;
+        transition: all 0.2s ease !important;
+      }
+      .btn-toggle-pass:hover {
+        background: rgba(76, 215, 246, 0.15) !important;
+        border-color: rgba(76, 215, 246, 0.4) !important;
+        color: #4cd7f6 !important;
+      }
+      .btn-toggle-pass i {
+        position: static !important;
+        left: auto !important;
+        font-size: 14px !important;
+        color: inherit !important;
+      }
+
+      /* Forgot Password Modal Styles */
+      .forgot-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(4, 9, 18, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: fadeInModal 0.25s ease;
+      }
+      .forgot-modal-overlay.show {
+        display: flex;
+      }
+      @keyframes fadeInModal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes popInCard {
+        from { opacity: 0; transform: scale(0.94) translateY(10px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .forgot-modal-card {
+        background: linear-gradient(180deg, #171f32 0%, #111624 100%);
+        border: 1px solid rgba(76, 215, 246, 0.28);
+        border-radius: 24px;
+        max-width: 480px;
+        width: 100%;
+        padding: 28px;
+        box-shadow:
+          0 25px 70px rgba(0, 0, 0, 0.65),
+          0 0 40px rgba(6, 182, 212, 0.12);
+        animation: popInCard 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+      .forgot-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #94a3b8;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        transition: all 0.2s;
+      }
+      .forgot-modal-close:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: rgba(239, 68, 68, 0.4);
+        color: #fca5a5;
+      }
+      .forgot-icon-badge {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(76, 215, 246, 0.2), rgba(16, 185, 129, 0.2));
+        border: 1px solid rgba(76, 215, 246, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #4cd7f6;
+        margin-bottom: 16px;
+        box-shadow: 0 8px 24px rgba(6, 182, 212, 0.2);
+      }
+      .method-pills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .method-pill {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        color: #cbd5e1;
+        transition: all 0.2s;
+      }
+      .method-pill.active {
+        background: rgba(6, 182, 212, 0.15);
+        border-color: #4cd7f6;
+        color: #ffffff;
+      }
+      .quick-account-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 14px;
+        margin-top: 18px;
+      }
+      .quick-acc-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        margin-top: 8px;
+      }
+      .btn-use-acc {
+        background: rgba(76, 215, 246, 0.15);
+        border: 1px solid rgba(76, 215, 246, 0.35);
+        color: #4cd7f6;
+        border-radius: 8px;
+        padding: 5px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-use-acc:hover {
+        background: #4cd7f6;
+        color: #0b1326;
+      }
+    </style>
+  </head>
+  <body class="login-body">
+    <div class="login-container">
+      <!-- PANEL KIRI: Latar Belakang Kebun Sawit & Showcase PT Sawit Abadi Tbk -->
+      <div class="login-left">
+        <div class="login-top-bar">
+          <div class="login-branding">
+            <img
+              src="assets/img/logo-sawit-abadi.jpg"
+              alt="PT Sawit Abadi Tbk"
+              style="
+                width: 44px;
+                height: 44px;
+                border-radius: 10px;
+                object-fit: contain;
+                background: #fff;
+                padding: 2px;
+              "
+            />
+            <div>
+              <h2 style="font-size: 18px; font-weight: 800; margin: 0; color: #fff;">
+                PT SAWIT ABADI Tbk
+              </h2>
+              <span style="font-size: 11px; color: #4edea3; font-weight: 600;">
+                HRMS & Plantation Enterprise Portal
+              </span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="btn-switch-bg"
+            onclick="document.body.classList.toggle('bg-mode-logo')"
+            title="Ganti gaya tampilan latar belakang"
+          >
+            <i class="fa-solid fa-image" style="color: #fbbf24;"></i>
+            Ubah Gaya Background
+          </button>
+        </div>
+
+        <div class="login-illustration">
+          <div class="brand-showcase-card">
+            <div class="brand-logo-box">
+              <img src="assets/img/logo-sawit-abadi.jpg" alt="Logo PT Sawit Abadi Tbk" />
+            </div>
+            <div class="brand-badge-pill">
+              <i class="fa-solid fa-seedling"></i> Agro-Industry & Plantation HRMS
+            </div>
+            <h3>Sistem Informasi SDM Terpadu</h3>
+            <p>
+              Kelola operasional karyawan perkebunan & kantor pusat, presensi harian,
+              cuti, hingga otomasi penggajian (e-Payslip) PT Sawit Abadi Tbk dalam satu
+              ekosistem terpusat.
+            </p>
+            <div class="brand-stats-row">
+              <div class="brand-stat-item">
+                <div class="brand-stat-val">100%</div>
+                <div class="brand-stat-lbl">Real-Time Sync</div>
+              </div>
+              <div class="brand-stat-item">
+                <div class="brand-stat-val" style="color: #4edea3;">e-Payroll</div>
+                <div class="brand-stat-lbl">PPh21 & BPJS</div>
+              </div>
+              <div class="brand-stat-item">
+                <div class="brand-stat-val" style="color: #4cd7f6;">24/7</div>
+                <div class="brand-stat-lbl">Portal Pegawai</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="login-left-footer">
+          <span><i class="fa-solid fa-location-dot" style="color: #4edea3; margin-right: 6px;"></i>Perkebunan & Head Office Indonesia</span>
+          <span>&copy; 2026 PT Sawit Abadi Tbk</span>
+        </div>
+      </div>
+
+      <!-- PANEL KANAN: Form Login -->
+      <div class="login-right">
+        <div class="login-form-wrapper">
+          <div class="login-form-logo-head">
+            <img src="assets/img/logo-sawit-abadi.jpg" alt="PT Sawit Abadi Tbk" />
+            <div>
+              <div style="font-size: 14px; font-weight: 800; color: #ffffff; letter-spacing: 0.3px;">
+                PT SAWIT ABADI Tbk
+              </div>
+              <div style="font-size: 11px; color: #fbbf24; font-weight: 600;">
+                Human Resource Management System
+              </div>
+            </div>
+          </div>
+
+          <div class="login-header" style="margin-bottom: 24px;">
+            <h1 style="font-size: 26px;">Selamat Datang Kembali</h1>
+            <p>Silakan masuk menggunakan akun HRMS Anda</p>
+          </div>
+
+          <form id="loginForm" class="login-form" autocomplete="off">
+            <div class="form-group">
+              <label for="loginEmail">Email / NIP / Username</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-user"></i>
+                <input
+                  type="text"
+                  id="loginEmail"
+                  placeholder="Masukkan Email, NIP, atau Username"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword" style="display:flex;justify-content:space-between;align-items:center;">
+                <span>Kata Sandi</span>
+                <span style="font-size:11px;color:#64748b;font-weight:400;">Klik ikon mata untuk lihat sandi</span>
+              </label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  placeholder="Masukkan kata sandi..."
+                  required
+                  autocomplete="new-password"
+                />
+                <button
+                  type="button"
+                  class="btn-toggle-pass"
+                  id="togglePass"
+                  title="Lihat / Sembunyikan Kata Sandi"
+                >
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" id="rememberMe" checked />
+                <span>Ingat Saya</span>
+              </label>
+              <a
+                href="#"
+                class="forgot-pass"
+                id="btnOpenForgotModal"
+                onclick="openForgotModal(event)"
+              >
+                <i class="fa-solid fa-key" style="font-size: 11px; margin-right: 4px;"></i>Lupa sandi?
+              </a>
+            </div>
+
+            <button type="submit" class="btn-login" id="btnLogin">
+              Masuk ke Sistem <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL KEREN: LUPA KATA SANDI & PEMULIHAN AKSES -->
+    <div class="forgot-modal-overlay" id="forgotModalOverlay">
+      <div class="forgot-modal-card">
+        <button type="button" class="forgot-modal-close" onclick="closeForgotModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div id="forgotStepForm">
+          <div class="forgot-icon-badge">
+            <i class="fa-solid fa-shield-keyhole" style="font-family:'Font Awesome 6 Free';font-weight:900;">&#xf084;</i>
+          </div>
+          <h3 style="margin: 0 0 6px 0; font-size: 20px; font-weight: 800; color: #ffffff;">
+            Pemulihan Kata Sandi HRMS
+          </h3>
+          <p style="margin: 0 0 18px 0; font-size: 13px; color: #94a3b8; line-height: 1.5;">
+            Masukkan NIP, Email, atau Username Anda. Sistem IT Helpdesk <strong>PT Sawit Abadi Tbk</strong> akan mengirimkan tautan & kode reset sandi.
+          </p>
+
+          <div style="margin-bottom: 14px;">
+            <label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;letter-spacing:0.5px;">
+              PILIH METODE PEMULIHAN
+            </label>
+            <div class="method-pills">
+              <div class="method-pill active" id="pillEmail" onclick="selectRecoveryMethod('email')">
+                <i class="fa-solid fa-envelope-open-text" style="color:#4cd7f6;font-size:15px;"></i>
+                <div>
+                  <div>Email Korporat</div>
+                  <div style="font-size:10px;color:#64748b;font-weight:400;">Instan (Otomatis)</div>
+                </div>
+              </div>
+              <div class="method-pill" id="pillWA" onclick="selectRecoveryMethod('wa')">
+                <i class="fa-brands fa-whatsapp" style="color:#4edea3;font-size:17px;"></i>
+                <div>
+                  <div>WhatsApp IT / HR</div>
+                  <div style="font-size:10px;color:#64748b;font-weight:400;">OTP & Helpdesk</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;letter-spacing:0.5px;">
+              EMAIL / NIP / USERNAME AKUN
+            </label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-id-card"></i>
+              <input
+                type="text"
+                id="forgotInputUser"
+                placeholder="Contoh: EMP-0012 atau budi.santoso@company.co.id"
+              />
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="btn-login"
+            id="btnSubmitForgot"
+            onclick="submitForgotRequest()"
+            style="padding: 13px; font-size: 14px;"
+          >
+            <i class="fa-solid fa-paper-plane"></i> Kirim Permintaan Reset Sandi
+          </button>
+
+          <div
+            style="
+              margin-top: 16px;
+              padding: 12px 14px;
+              border-radius: 12px;
+              background: rgba(255, 255, 255, 0.03);
+              border: 1px solid rgba(255, 255, 255, 0.08);
+              font-size: 11px;
+              color: #94a3b8;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <i class="fa-solid fa-headset" style="color: #4cd7f6; font-size: 16px;"></i>
+            <div>
+              Butuh bantuan darurat? Hubungi <strong>IT Helpdesk PT Sawit Abadi Tbk</strong> (Ext. 104 / helpdesk@sawitabadi.co.id).
+            </div>
+          </div>
+        </div>
+
+        <!-- Tampilan Notifikasi Sukses Reset Sandi -->
+        <div id="forgotStepSuccess" style="display: none; text-align: center; padding: 10px 0;">
+          <div
+            style="
+              width: 68px;
+              height: 68px;
+              border-radius: 50%;
+              background: rgba(78, 222, 163, 0.15);
+              border: 2px solid #4edea3;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 30px;
+              color: #4edea3;
+              margin: 0 auto 16px;
+              box-shadow: 0 0 30px rgba(78, 222, 163, 0.3);
+            "
+          >
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div
+            style="
+              display: inline-block;
+              background: rgba(76, 215, 246, 0.15);
+              border: 1px solid rgba(76, 215, 246, 0.35);
+              color: #4cd7f6;
+              font-size: 11px;
+              font-weight: 700;
+              padding: 4px 12px;
+              border-radius: 99px;
+              margin-bottom: 10px;
+            "
+            id="forgotTicketBadge"
+          >
+            TIKET #RST-88421 • TERVERIFIKASI
+          </div>
+          <h3 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 800; color: #ffffff;">
+            Permintaan Reset Terkirim!
+          </h3>
+          <p style="margin: 0 0 18px 0; font-size: 13px; color: #cbd5e1; line-height: 1.6;" id="forgotSuccessDesc">
+            Instruksi pemulihan kata sandi dan kode OTP sementara telah dikirimkan ke akun Anda.
+          </p>
+
+          <div
+            style="
+              background: rgba(15, 23, 42, 0.8);
+              border: 1px dashed rgba(78, 222, 163, 0.45);
+              border-radius: 14px;
+              padding: 14px;
+              margin-bottom: 20px;
+              text-align: left;
+            "
+          >
+            <div style="font-size: 11px; color: #94a3b8; margin-bottom: 6px;">
+              <i class="fa-solid fa-shield-halved" style="color: #4edea3; margin-right: 6px;"></i>
+              <strong>Informasi Keamanan Akun:</strong>
+            </div>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
+              Tautan pemulihan berlaku selama <strong style="color: #fbbf24;">15 menit</strong>. Silakan periksa kotak masuk Anda atau konfirmasi ke bagian HRD & IT Support.
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button
+              type="button"
+              class="btn-login"
+              onclick="closeForgotModal()"
+              style="padding: 12px; font-size: 13px;"
+            >
+              <i class="fa-solid fa-check-double"></i> Mengerti & Kembali Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let selectedRecoveryMethod = "email";
+
+      function fillDemoAccount(user, pass, roleLabel) {
+        const emailEl = document.getElementById("loginEmail");
+        const passEl = document.getElementById("loginPassword");
+        if (emailEl && passEl) {
+          emailEl.value = user;
+          passEl.value = pass;
+          emailEl.style.borderColor = "#4cd7f6";
+          passEl.style.borderColor = "#4cd7f6";
+          setTimeout(() => {
+            emailEl.style.borderColor = "";
+            passEl.style.borderColor = "";
+          }, 1200);
+        }
+        if (typeof Utils !== "undefined" && Utils.showToast) {
+          Utils.showToast(
+            `Akun ${roleLabel} (${user}) berhasil diisi! Klik "Masuk ke Sistem".`,
+            "info"
+          );
+        }
+      }
+
+      function openForgotModal(e) {
+        if (e) e.preventDefault();
+        const currentEmail = document.getElementById("loginEmail")?.value || "";
+        const forgotInput = document.getElementById("forgotInputUser");
+        if (forgotInput && currentEmail) {
+          forgotInput.value = currentEmail;
+        }
+        document.getElementById("forgotStepForm").style.display = "block";
+        document.getElementById("forgotStepSuccess").style.display = "none";
+        document.getElementById("forgotModalOverlay").classList.add("show");
+      }
+
+      function closeForgotModal() {
+        document.getElementById("forgotModalOverlay").classList.remove("show");
+      }
+
+      function selectRecoveryMethod(method) {
+        selectedRecoveryMethod = method;
+        document.getElementById("pillEmail").classList.toggle("active", method === "email");
+        document.getElementById("pillWA").classList.toggle("active", method === "wa");
+      }
+
+      function submitForgotRequest() {
+        const inputVal = document.getElementById("forgotInputUser").value.trim() || "pegawai@sawitabadi.co.id";
+        const btn = document.getElementById("btnSubmitForgot");
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Menghubungi Server IT PT Sawit Abadi Tbk...`;
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          const ticketNo = "RST-" + Math.floor(10000 + Math.random() * 90000);
+          document.getElementById("forgotTicketBadge").textContent = `TIKET #${ticketNo} • TERVERIFIKASI OTOMATIS`;
+          const channelName = selectedRecoveryMethod === "wa" ? "WhatsApp Terdaftar" : "Email Korporat";
+          document.getElementById("forgotSuccessDesc").innerHTML =
+            `Tautan pemulihan untuk akun <strong style="color:#4cd7f6;">${inputVal}</strong> telah dikirim melalui <strong>${channelName}</strong> oleh sistem IT Helpdesk PT Sawit Abadi Tbk.`;
+          document.getElementById("forgotStepForm").style.display = "none";
+          document.getElementById("forgotStepSuccess").style.display = "block";
+
+          if (typeof Utils !== "undefined" && Utils.showToast) {
+            Utils.showToast(`Tiket Reset Sandi #${ticketNo} berhasil dikirim!`, "success");
+          }
+        }, 700);
+      }
+
+      document.getElementById("forgotModalOverlay")?.addEventListener("click", function (e) {
+        if (e.target === this) closeForgotModal();
+      });
+    </script>
+
+    <!-- Script References -->
+    <script src="assets/js/db.js?v=20261110_1"></script>
+    <script src="assets/js/script.js?v=20261110_1"></script>
+  </body>
+</html>

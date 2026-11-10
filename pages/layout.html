@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS Admin Panel - Layout Master</title>
+
+    <!-- Link ke file CSS buatan kita -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- Link FontAwesome untuk Ikon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- BUNGKUSAN UTAMA -->
+    <div class="admin-layout">
+      <!-- SIDEBAR KIRI (GLASS PANEL) -->
+      <aside class="sidebar glass-panel">
+        <div class="sidebar-header">
+          <h2>
+            <i class="fa-solid fa-layer-group"></i> HRMS<span
+              style="color: white; font-weight: 400"
+              >Admin</span
+            >
+          </h2>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><i class="fa-solid fa-chart-pie" style="width: 20px"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="data-master.html"
+              ><i class="fa-solid fa-users" style="width: 20px"></i> Data
+              Karyawan</a
+            >
+          </li>
+          <li>
+            <a href="presensi.html"
+              ><i class="fa-solid fa-calendar-check" style="width: 20px"></i>
+              Presensi & Cuti</a
+            >
+          </li>
+          <li>
+            <a href="penggajian.html"
+              ><i
+                class="fa-solid fa-money-check-dollar"
+                style="width: 20px"
+              ></i>
+              Penggajian</a
+            >
+          </li>
+          <li>
+            <a href="laporan.html"
+              ><i class="fa-solid fa-file-invoice" style="width: 20px"></i>
+              Laporan</a
+            >
+          </li>
+          <li>
+            <a href="pengaturan.html"
+              ><i class="fa-solid fa-gear" style="width: 20px"></i>
+              Pengaturan</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <!-- AREA KONTEN KANAN -->
+      <main class="main-content">
+        <!-- HEADER ATAS (GLASS PANEL) -->
+        <header class="top-header glass-panel">
+          <!-- Tombol menu (Muncul saat di HP) -->
+          <button
+            id="mobile-toggle"
+            style="
+              display: none;
+              background: none;
+              border: none;
+              color: white;
+              font-size: 20px;
+              cursor: pointer;
+            "
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="header-search">
+            <i
+              class="fa-solid fa-search"
+              style="position: absolute; margin: 12px; color: #94a3b8"
+            ></i>
+            <input type="text" placeholder="   Cari karyawan atau menu..." />
+          </div>
+
+          <div class="header-profile">
+            <i
+              class="fa-solid fa-bell"
+              style="font-size: 20px; color: #94a3b8; cursor: pointer"
+            ></i>
+            <div class="user-info">
+              <div class="user-name">Administrator HRD</div>
+              <div class="user-role">Super Admin</div>
+            </div>
+            <!-- Avatar Lingkaran -->
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: var(--primary-cyan);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+              "
+            >
+              AD
+            </div>
+          </div>
+        </header>
+
+        <!-- KANVAS UTAMA (Tempat halaman lain dimuat) -->
+        <div class="content-canvas glass-panel">
+          <h1 style="margin-bottom: 10px">Area Konten Dinamis</h1>
+          <p style="color: var(--text-muted)">
+            Ini adalah kerangka dasar Master Layout (layout.html). Pada
+            Milestone 3, kotak ini akan diisi dengan tabel, form, atau grafik
+            untuk masing-masing halaman yang berbeda.
+          </p>
+
+          <br />
+          <div
+            style="
+              padding: 20px;
+              background: rgba(6, 182, 212, 0.1);
+              border-left: 4px solid var(--primary-cyan);
+              border-radius: 8px;
+            "
+          >
+            <b>Catatan Milestone 2 Selesai!</b> 🎉<br />
+            Coba buka file ini di browser. Kamu akan melihat layout
+            Glassmorphism yang sudah rapi: ada warna gradien gelap, efek kaca
+            buram (backdrop-filter), shadow, dan sidebar interaktif.
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
