@@ -192,12 +192,12 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
-('companyName', 'PT Nebula Solusi Digital Indonesia Tbk'),
-('companyLegalName', 'PT Nebula Solusi Digital Indonesia Tbk'),
+('companyName', 'PT Sawit Abadi Tbk'),
+('companyLegalName', 'PT Sawit Abadi Tbk'),
 ('companyNIB', '81203912039123'),
 ('companyEmail', 'hrd@company.co.id'),
 ('companyPhone', '+62 (21) 5088-9100'),
-('companyWebsite', 'https://nebula.co.id'),
+('companyWebsite', 'https://sawitabadi.co.id'),
 ('companyAddress', 'Menara Sudirman Lt. 28, Jl. Jend. Sudirman Kav. 60, Senayan, Kebayoran Baru, Jakarta Selatan 12190'),
 ('allowESS', 'true'),
 ('autoEmailSlipGaji', 'true'),
