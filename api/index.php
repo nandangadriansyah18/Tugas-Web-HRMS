@@ -98,21 +98,28 @@ try {
             exit;
         }
 
-        // Fallback: cek apakah login menggunakan NIP atau Email karyawan (password default: pegawai123)
+        // Fallback: cek apakah login menggunakan NIP atau Email karyawan
         $stmtEmp = $pdo->prepare("SELECT * FROM `employees` WHERE (LOWER(`nip`) = LOWER(:u) OR LOWER(`email`) = LOWER(:e)) LIMIT 1");
         $stmtEmp->execute(['u' => $username, 'e' => $username]);
         $emp = $stmtEmp->fetch();
 
-        if ($emp && $password === 'pegawai123') {
-            echo json_encode([
-                "status" => "success",
-                "user" => [
-                    "id" => $emp['id'],
-                    "role" => "pegawai",
-                    "name" => $emp['nama']
-                ]
-            ]);
-            exit;
+        if ($emp) {
+            $stmtEmpUser = $pdo->prepare("SELECT * FROM `users` WHERE `employee_id` = :eid LIMIT 1");
+            $stmtEmpUser->execute(['eid' => $emp['id']]);
+            $empUser = $stmtEmpUser->fetch();
+            $expectedPass = $empUser ? $empUser['password'] : 'pegawai123';
+
+            if ($password === $expectedPass) {
+                echo json_encode([
+                    "status" => "success",
+                    "user" => [
+                        "id" => $emp['id'],
+                        "role" => $empUser['role'] ?? "pegawai",
+                        "name" => $emp['nama']
+                    ]
+                ]);
+                exit;
+            }
         }
 
         http_response_code(401);
@@ -120,6 +127,55 @@ try {
             "status" => "error",
             "message" => "Email/NIP atau kata sandi salah"
         ]);
+        exit;
+    }
+
+    // 2B. RESET PASSWORD (Lupa Sandi / Profil Saya)
+    if ($action === 'reset_password' && $method === 'POST') {
+        $identifier = trim($input['identifier'] ?? '');
+        $newPassword = $input['newPassword'] ?? '';
+
+        if (!$identifier || strlen($newPassword) < 4) {
+            throw new Exception("Identifier atau kata sandi baru minimal 4 karakter.");
+        }
+
+        $cleanUser = str_starts_with(strtolower($identifier), 'admin@')
+            ? 'admin'
+            : (str_starts_with(strtolower($identifier), 'pegawai@') ? 'pegawai' : $identifier);
+
+        $stmt = $pdo->prepare("SELECT * FROM `users` WHERE LOWER(`username`) = LOWER(:u) OR LOWER(`employee_id`) = LOWER(:eid) LIMIT 1");
+        $stmt->execute(['u' => $cleanUser, 'eid' => $cleanUser]);
+        $user = $stmt->fetch();
+
+        if ($user) {
+            $pdo->prepare("UPDATE `users` SET `password` = :p WHERE `id` = :id")
+                ->execute(['p' => $newPassword, 'id' => $user['id']]);
+            echo json_encode(["status" => "success", "message" => "Kata sandi berhasil diperbarui."]);
+            exit;
+        }
+
+        $stmtEmp = $pdo->prepare("SELECT * FROM `employees` WHERE LOWER(`id`) = LOWER(:i) OR LOWER(`nip`) = LOWER(:n) OR LOWER(`email`) = LOWER(:e) LIMIT 1");
+        $stmtEmp->execute(['i' => $identifier, 'n' => $identifier, 'e' => $identifier]);
+        $emp = $stmtEmp->fetch();
+
+        if ($emp) {
+            $stmtEmpUser = $pdo->prepare("SELECT * FROM `users` WHERE `employee_id` = :eid LIMIT 1");
+            $stmtEmpUser->execute(['eid' => $emp['id']]);
+            $empUser = $stmtEmpUser->fetch();
+            if ($empUser) {
+                $pdo->prepare("UPDATE `users` SET `password` = :p WHERE `id` = :id")
+                    ->execute(['p' => $newPassword, 'id' => $empUser['id']]);
+            } else {
+                $newUid = 'USR-' . strtoupper(substr(md5($emp['id']), 0, 6));
+                $pdo->prepare("INSERT INTO `users` (`id`, `username`, `password`, `name`, `role`, `employee_id`) VALUES (?, ?, ?, ?, 'pegawai', ?)")
+                    ->execute([$newUid, $emp['email'], $newPassword, $emp['nama'], $emp['id']]);
+            }
+            echo json_encode(["status" => "success", "message" => "Kata sandi karyawan berhasil diperbarui."]);
+            exit;
+        }
+
+        http_response_code(404);
+        echo json_encode(["status" => "error", "message" => "Akun tidak ditemukan."]);
         exit;
     }
 

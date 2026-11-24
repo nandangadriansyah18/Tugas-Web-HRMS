@@ -4321,8 +4321,13 @@ function initPengaturan() {
         const newEmail = document.getElementById("prof-email").value.trim();
         const newPhone = document.getElementById("prof-phone").value.trim();
         const newWm = document.getElementById("prof-workmodel").value;
+        const newPass = document.getElementById("prof-pass").value;
         if (!newNama || !newEmail) {
           Utils.showToast("Nama dan Email tidak boleh kosong!", "error");
+          return;
+        }
+        if (newPass && newPass.length < 4) {
+          Utils.showToast("Kata sandi baru minimal 4 karakter!", "error");
           return;
         }
         HRMSDatabase.update("employees", myEmp.id, {
@@ -4331,6 +4336,9 @@ function initPengaturan() {
           phone: newPhone,
           workModel: newWm,
         });
+        if (newPass && typeof HRMSDatabase.resetPassword === "function") {
+          HRMSDatabase.resetPassword(myEmp.id, newPass);
+        }
         activeUser.name = newNama;
         localStorage.setItem("hrms_active_user", JSON.stringify(activeUser));
         Utils.showToast("Profil Anda berhasil diperbarui! ✅", "success");
@@ -4582,13 +4590,22 @@ function initLogin() {
 
       // 2. Fallback apabila XAMPP belum nyala / dibuka langsung via file
       if (!userObj) {
-        if ((email === "admin" || email.startsWith("admin@")) && pass === "admin123") {
+        const expectedAdmin =
+          typeof HRMSDatabase.getExpectedLocalPassword === "function"
+            ? HRMSDatabase.getExpectedLocalPassword("admin", "admin123")
+            : "admin123";
+        const expectedPegawai =
+          typeof HRMSDatabase.getExpectedLocalPassword === "function"
+            ? HRMSDatabase.getExpectedLocalPassword("pegawai", "pegawai123")
+            : "pegawai123";
+
+        if ((email === "admin" || email.startsWith("admin@")) && pass === expectedAdmin) {
           userObj = {
             id: "ADMIN-1",
             role: "admin",
             name: "Sarah Wijaya (Admin HRD)",
           };
-        } else if ((email === "pegawai" || email.startsWith("pegawai@")) && pass === "pegawai123") {
+        } else if ((email === "pegawai" || email.startsWith("pegawai@")) && pass === expectedPegawai) {
           userObj = { id: "EMP-001", role: "pegawai", name: "Budi Santoso" };
         } else {
           const emps = HRMSDatabase.getAll("employees");
@@ -4597,7 +4614,11 @@ function initLogin() {
               emp.nip.toLowerCase() === email ||
               emp.email.toLowerCase() === email,
           );
-          if (found && pass === "pegawai123") {
+          const expectedEmpPass =
+            found && typeof HRMSDatabase.getExpectedLocalPassword === "function"
+              ? HRMSDatabase.getExpectedLocalPassword(found.id, "pegawai123")
+              : "pegawai123";
+          if (found && pass === expectedEmpPass) {
             userObj = { id: found.id, role: "pegawai", name: found.nama };
           }
         }

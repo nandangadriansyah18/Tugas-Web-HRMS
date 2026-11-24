@@ -245,6 +245,49 @@ const HRMSDatabase = (() => {
     return null;
   }
 
+  function _resolveAccountKeys(identifier) {
+    const raw = String(identifier || "").trim().toLowerCase();
+    if (!raw) return [];
+    if (raw === "admin" || raw.startsWith("admin@")) return ["admin", "ADMIN-1"];
+    if (raw === "pegawai" || raw.startsWith("pegawai@")) {
+      return ["pegawai", "EMP-001", "emp-0012", "budi.santoso@company.co.id"];
+    }
+    const emps = _read("employees");
+    const emp = emps.find(
+      (e) =>
+        (e.id && e.id.toLowerCase() === raw) ||
+        (e.nip && e.nip.toLowerCase() === raw) ||
+        (e.email && e.email.toLowerCase() === raw)
+    );
+    if (emp) {
+      const keys = [emp.id.toLowerCase(), emp.nip.toLowerCase(), emp.email.toLowerCase()];
+      if (emp.id === "EMP-001") keys.push("pegawai");
+      return keys;
+    }
+    return [raw];
+  }
+
+  function resetPassword(identifier, newPassword) {
+    const keys = _resolveAccountKeys(identifier);
+    if (keys.length === 0 || !newPassword) return false;
+    const map = _readObj("custom_passwords");
+    keys.forEach((k) => {
+      map[k] = newPassword;
+    });
+    _writeObj("custom_passwords", map);
+    _sendToBackend("reset_password", { identifier, newPassword });
+    return true;
+  }
+
+  function getExpectedLocalPassword(identifier, defaultPass) {
+    const map = _readObj("custom_passwords");
+    const keys = _resolveAccountKeys(identifier);
+    for (const k of keys) {
+      if (map[k]) return map[k];
+    }
+    return defaultPass;
+  }
+
   function seed() {
     const defaultSettings = {
       companyName: "PT Sawit Abadi Tbk",
@@ -685,5 +728,7 @@ const HRMSDatabase = (() => {
     seed,
     syncWithMySQL,
     authenticate,
+    resetPassword,
+    getExpectedLocalPassword,
   };
 })();

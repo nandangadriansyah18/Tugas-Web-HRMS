@@ -697,6 +697,62 @@
           </div>
         </div>
 
+        <!-- Langkah 2: Buat Kata Sandi Baru Setelah Verifikasi Tiket -->
+        <div id="forgotStepReset" style="display: none;">
+          <div
+            style="
+              display: inline-block;
+              background: rgba(76, 215, 246, 0.15);
+              border: 1px solid rgba(76, 215, 246, 0.35);
+              color: #4cd7f6;
+              font-size: 11px;
+              font-weight: 700;
+              padding: 4px 12px;
+              border-radius: 99px;
+              margin-bottom: 10px;
+            "
+            id="forgotResetTicketBadge"
+          >
+            TIKET #RST-88421 • TERVERIFIKASI
+          </div>
+          <h3 style="margin: 0 0 6px 0; font-size: 20px; font-weight: 800; color: #ffffff;">
+            Buat Kata Sandi Baru
+          </h3>
+          <p style="margin: 0 0 16px 0; font-size: 13px; color: #94a3b8; line-height: 1.5;" id="forgotResetDesc">
+            Akun terverifikasi. Silakan masukkan kata sandi baru Anda di bawah ini.
+          </p>
+
+          <div style="margin-bottom: 12px;">
+            <label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;letter-spacing:0.5px;">
+              KATA SANDI BARU (MIN. 4 KARAKTER)
+            </label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="forgotNewPass" placeholder="Masukkan kata sandi baru" />
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display:block;font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;letter-spacing:0.5px;">
+              KONFIRMASI KATA SANDI BARU
+            </label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+              <input type="password" id="forgotConfirmPass" placeholder="Ulangi kata sandi baru" />
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="btn-login"
+            id="btnConfirmResetPass"
+            onclick="confirmPasswordReset()"
+            style="padding: 13px; font-size: 14px;"
+          >
+            <i class="fa-solid fa-key"></i> Simpan Kata Sandi Baru
+          </button>
+        </div>
+
         <!-- Tampilan Notifikasi Sukses Reset Sandi -->
         <div id="forgotStepSuccess" style="display: none; text-align: center; padding: 10px 0;">
           <div
@@ -759,12 +815,30 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 10px;">
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a
+              id="btnOpenWaHelpdesk"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-login"
+              style="
+                display: none;
+                flex: 1;
+                padding: 12px;
+                font-size: 13px;
+                text-decoration: none;
+                background: linear-gradient(135deg, #10b981, #059669);
+                justify-content: center;
+              "
+            >
+              <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Konfirmasi via WhatsApp
+            </a>
             <button
               type="button"
               class="btn-login"
               onclick="closeForgotModal()"
-              style="padding: 12px; font-size: 13px;"
+              style="flex: 1; padding: 12px; font-size: 13px;"
             >
               <i class="fa-solid fa-check-double"></i> Mengerti & Kembali Login
             </button>
@@ -775,6 +849,8 @@
 
     <script>
       let selectedRecoveryMethod = "email";
+      let pendingResetUser = "";
+      let pendingResetTicket = "";
 
       function fillDemoAccount(user, pass, roleLabel) {
         const emailEl = document.getElementById("loginEmail");
@@ -805,7 +881,10 @@
           forgotInput.value = currentEmail;
         }
         document.getElementById("forgotStepForm").style.display = "block";
+        document.getElementById("forgotStepReset").style.display = "none";
         document.getElementById("forgotStepSuccess").style.display = "none";
+        document.getElementById("forgotNewPass").value = "";
+        document.getElementById("forgotConfirmPass").value = "";
         document.getElementById("forgotModalOverlay").classList.add("show");
       }
 
@@ -819,8 +898,39 @@
         document.getElementById("pillWA").classList.toggle("active", method === "wa");
       }
 
+      function isKnownAccount(identifier) {
+        const raw = String(identifier || "").trim().toLowerCase();
+        if (!raw) return false;
+        if (raw === "admin" || raw.startsWith("admin@") || raw === "pegawai" || raw.startsWith("pegawai@")) {
+          return true;
+        }
+        if (typeof HRMSDatabase !== "undefined") {
+          const emps = HRMSDatabase.getAll("employees") || [];
+          return emps.some(
+            (e) =>
+              (e.id && e.id.toLowerCase() === raw) ||
+              (e.nip && e.nip.toLowerCase() === raw) ||
+              (e.email && e.email.toLowerCase() === raw)
+          );
+        }
+        return false;
+      }
+
       function submitForgotRequest() {
-        const inputVal = document.getElementById("forgotInputUser").value.trim() || "pegawai@sawitabadi.co.id";
+        const inputVal = document.getElementById("forgotInputUser").value.trim();
+        if (!inputVal) {
+          if (typeof Utils !== "undefined" && Utils.showToast) {
+            Utils.showToast("Masukkan Email, NIP, atau Username terlebih dahulu.", "error");
+          }
+          return;
+        }
+        if (!isKnownAccount(inputVal)) {
+          if (typeof Utils !== "undefined" && Utils.showToast) {
+            Utils.showToast("Akun tidak ditemukan di sistem HRMS.", "error");
+          }
+          return;
+        }
+
         const btn = document.getElementById("btnSubmitForgot");
         const originalHTML = btn.innerHTML;
         btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Menghubungi Server IT PT Sawit Abadi Tbk...`;
@@ -829,18 +939,63 @@
         setTimeout(() => {
           btn.innerHTML = originalHTML;
           btn.disabled = false;
-          const ticketNo = "RST-" + Math.floor(10000 + Math.random() * 90000);
-          document.getElementById("forgotTicketBadge").textContent = `TIKET #${ticketNo} • TERVERIFIKASI OTOMATIS`;
+          pendingResetUser = inputVal;
+          pendingResetTicket = "RST-" + Math.floor(10000 + Math.random() * 90000);
           const channelName = selectedRecoveryMethod === "wa" ? "WhatsApp Terdaftar" : "Email Korporat";
-          document.getElementById("forgotSuccessDesc").innerHTML =
-            `Tautan pemulihan untuk akun <strong style="color:#4cd7f6;">${inputVal}</strong> telah dikirim melalui <strong>${channelName}</strong> oleh sistem IT Helpdesk PT Sawit Abadi Tbk.`;
+          document.getElementById("forgotResetTicketBadge").textContent = `TIKET #${pendingResetTicket} • TERVERIFIKASI OTOMATIS`;
+          document.getElementById("forgotResetDesc").innerHTML =
+            `Verifikasi akun <strong style="color:#4cd7f6;">${inputVal}</strong> berhasil melalui <strong>${channelName}</strong>. Silakan buat kata sandi baru Anda.`;
           document.getElementById("forgotStepForm").style.display = "none";
-          document.getElementById("forgotStepSuccess").style.display = "block";
+          document.getElementById("forgotStepReset").style.display = "block";
+        }, 600);
+      }
 
+      function confirmPasswordReset() {
+        const newPass = document.getElementById("forgotNewPass").value;
+        const confirmPass = document.getElementById("forgotConfirmPass").value;
+        if (newPass.length < 4) {
           if (typeof Utils !== "undefined" && Utils.showToast) {
-            Utils.showToast(`Tiket Reset Sandi #${ticketNo} berhasil dikirim!`, "success");
+            Utils.showToast("Kata sandi baru minimal 4 karakter.", "error");
           }
-        }, 700);
+          return;
+        }
+        if (newPass !== confirmPass) {
+          if (typeof Utils !== "undefined" && Utils.showToast) {
+            Utils.showToast("Konfirmasi kata sandi tidak cocok.", "error");
+          }
+          return;
+        }
+        if (typeof HRMSDatabase !== "undefined" && typeof HRMSDatabase.resetPassword === "function") {
+          HRMSDatabase.resetPassword(pendingResetUser, newPass);
+        }
+
+        document.getElementById("forgotTicketBadge").textContent = `TIKET #${pendingResetTicket} • SANDI DIPERBARUI`;
+        document.getElementById("forgotSuccessDesc").innerHTML =
+          `Kata sandi untuk akun <strong style="color:#4cd7f6;">${pendingResetUser}</strong> berhasil diperbarui. Anda sekarang dapat masuk menggunakan kata sandi baru.`;
+        document.getElementById("forgotStepReset").style.display = "none";
+        document.getElementById("forgotStepSuccess").style.display = "block";
+
+        const waBtn = document.getElementById("btnOpenWaHelpdesk");
+        if (waBtn) {
+          if (selectedRecoveryMethod === "wa") {
+            const waText = encodeURIComponent(
+              `Halo IT Helpdesk / HRD PT Sawit Abadi Tbk,\nSaya telah melakukan reset kata sandi HRMS.\n• Akun: ${pendingResetUser}\n• No. Tiket: #${pendingResetTicket}\nMohon konfirmasinya. Terima kasih.`
+            );
+            waBtn.href = `https://wa.me/6281234567890?text=${waText}`;
+            waBtn.style.display = "flex";
+          } else {
+            waBtn.style.display = "none";
+          }
+        }
+
+        const loginEmailEl = document.getElementById("loginEmail");
+        const loginPassEl = document.getElementById("loginPassword");
+        if (loginEmailEl) loginEmailEl.value = pendingResetUser;
+        if (loginPassEl) loginPassEl.value = newPass;
+
+        if (typeof Utils !== "undefined" && Utils.showToast) {
+          Utils.showToast(`Kata sandi berhasil direset! (#${pendingResetTicket})`, "success");
+        }
       }
 
       document.getElementById("forgotModalOverlay")?.addEventListener("click", function (e) {
